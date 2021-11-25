@@ -10,10 +10,17 @@ export class UtilisateurService {
 
   constructor(private http: HttpClient) { }
 
-  utilisateurAuthentification(u_username, u_password): any {
-    return this.http.post(environment.tierListAPI + "utilisateur", JSON.stringify({
-        u_username: u_username,
-        u_password: u_password
+  utilisateurAuthentification(username, password): any {
+    console.log(JSON.stringify({
+      u_username: username, u_password: password 
     }));
+    
+    return this.http.post(environment.tierListAPI + "utilisateur", 
+    //JSON.stringify(
+    {
+      "u_username": username, "u_password": password 
+    }
+    //)
+    );
   }
 }

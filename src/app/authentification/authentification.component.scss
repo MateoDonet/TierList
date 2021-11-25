@@ -1,20 +1,68 @@
+$primary :whitesmoke;
+$secondary :white;
+
 .authentification {
-    background-color: green;
+    @media screen and (max-width:425px) {
+        height: 290px;
+        width: 290px;
+    }
+    @media screen and (max-width:768px) and (min-width:426px) {
+        height: 320px;
+        width: 320px;
+    }
+    height: 400px;
+    width: 400px;
+    background-color: $secondary;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
     .authentification form {
-        background-color: whitesmoke;
-        padding: 1rem;
+        width: 90%;
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
         .authentification form div {
             margin: 1rem;
         }
 
+        %padding_fields {
+            @media screen and (max-width:425px) {
+                padding: 0.5rem 0;
+            }
+            @media screen and (max-width:768px) and (min-width:426px) {
+                padding: 0.7rem 0;
+            }
+            padding: 0.9rem 0;
+        }
+
             .authentification form div input {
-                
+                width: 100%;
+                @extend %padding_fields;
+                border: 1px solid black;
+                border-radius: 15px;
+                @media screen and (max-width:425px) {
+                    text-indent: 0.5rem;
+                }
+                @media screen and (max-width:768px) and (min-width:426px) {
+                    text-indent: 0.7rem;
+                }
+                text-indent: 0.9rem;
             }
 
             .authentification form div button {
                 width: 100%;
+                @extend %padding_fields;
+                color: white;
+                font-weight: bold;
+                background-color: #5E35D6;
+                border-radius: 5px;
             }
+
+    .authentification span {
+        margin-top: 1rem;
+    }

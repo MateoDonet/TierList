@@ -15,8 +15,6 @@ export class AuthentificationComponent implements OnInit {
 
   authentificationForm: FormGroup;
 
-  test;
-
   constructor(
     private utilisateurService: UtilisateurService,
     private router: Router,
@@ -41,8 +39,9 @@ export class AuthentificationComponent implements OnInit {
     this.utilisateurService.utilisateurAuthentification(
       this.uUsernameCtrl.value,
       this.uPasswordCtrl.value
-    ).subscribe((data: number) => {
-      console.log(data);
+    ).subscribe((data) => {
+      localStorage.setItem("u_id", data.u_id);
+      this.router.navigate(['/mes-medias'], { relativeTo: this.route });      
     });
   }
 }

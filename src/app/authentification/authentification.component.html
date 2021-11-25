@@ -1,13 +1,17 @@
-<div class="authentification flex-x-y-center h-100vh">    
-    <form (ngSubmit)="register()" [formGroup]="authentificationForm">
-        <div>
-            <input type="text" placeholder="Username" formControlName="u_username">
-        </div>
-        <div>
-            <input type="password" placeholder="Password" formControlName="u_password">
-        </div>
-        <div class="flex-x-center">
-            <button type="submit" [disabled]="authentificationForm.invalid">Log in</button>
-        </div>
-    </form>
+<div class="bc flex-x-y-center h-100vh">
+    <div class="authentification flex-x-y-center">
+        <h4>Sign in</h4>
+        <form (ngSubmit)="register()" [formGroup]="authentificationForm">
+            <div>
+                <input type="text" placeholder="Username" formControlName="u_username">
+            </div>
+            <div>
+                <input type="password" placeholder="Password" formControlName="u_password">
+            </div>
+            <div class="flex-x-center">
+                <button type="submit" [disabled]="authentificationForm.invalid">Log in</button>
+            </div>
+        </form>
+        <span>Don't have an account <a href="">Create one</a></span>
+    </div>
 </div>
