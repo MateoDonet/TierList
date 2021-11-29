@@ -1,13 +1,18 @@
 <app-menu></app-menu>
 
-<div class="flex-x-center">
-    <h4>New</h4>
-</div>
-
-<hr>
-
-<div>
+<div class="container">
+    <div class="flex-x-right sub-menu-container">
+        <div>
+            <div class="sub-menu" routerLink="add">Ajouter</div>
+            <div *ngIf="isActive('add')" class="active"></div>
+        </div>
+        <div>
+            <div class="sub-menu" routerLink="create">Créer</div>
+            <div *ngIf="isActive('create')" class="active"></div>
+        </div>
+    </div>
     
+    <router-outlet></router-outlet>
 </div>
 
 <app-menu-phone></app-menu-phone>

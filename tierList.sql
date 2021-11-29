@@ -58,13 +58,63 @@ INSERT INTO tier (tier_label) VALUES
 ('F');
 
 INSERT INTO categorie (categ_label) VALUES 
-('manga'),
 ('série'),
 ('film'),
-('animé');
+('manga'),
+('animé'),
+('livre'),
+('BD'),
+('Comics');
 
 INSERT INTO media (media_titre, media_description, media_img, media_etat, media_categ_id) VALUES 
 ('Brooklyn Nine-Nine', 'Cette comédie chorale suit les personnages et les affaires d un commissariat de Brooklyn, loin des dangers et des affaires plus spectaculaires du très chic Manhattan.', '', 2, 2);
 
 INSERT INTO utilisateur_media_list (uml_u_id, uml_media_id, uml_tier_id, uml_avancement) VALUES
 (2, 1, 1, 'Saison 7 Episode final');
+
+-- fonction pour créer un média puis le tierlistiser
+CREATE OR REPLACE FUNCTION mediaAndUtilisateurListAdd(
+    prm_media_titre CHARACTER VARYING, 
+	prm_media_description CHARACTER VARYING, 
+	prm_media_etat INT, 
+	prm_media_categ_id INT,
+	prm_user_id INT,
+	prm_tier_id INT,
+	prm_uml_avancement CHARACTER VARYING
+)
+RETURNS INT AS $body$
+DECLARE
+	media_id_out INT;
+	uml_id_out INT;
+BEGIN
+	-- rajouter l'image un jour
+	INSERT INTO media(
+		media_titre, 
+		media_description, 
+		media_etat, 
+		media_categ_id
+	) VALUES (
+		prm_media_titre,
+		prm_media_description,
+		prm_media_etat,
+		prm_media_categ_id
+	)
+	RETURNING media_id INTO media_id_out;
+
+    INSERT INTO utilisateur_media_list(
+		uml_u_id, 
+		uml_media_id, 
+		uml_tier_id, 
+		uml_avancement
+	) VALUES (
+		prm_user_id, 
+		media_id_out, 
+		prm_tier_id, 
+		prm_uml_avancement
+	)
+	RETURNING uml_id INTO uml_id_out;
+	RETURN uml_id_out;
+END; 
+$body$
+LANGUAGE plpgsql volatile;
+ALTER FUNCTION mediaAndUtilisateurListAdd(CHARACTER VARYING, CHARACTER VARYING, INT, INT, INT, INT, CHARACTER VARYING) OWNER TO tierlist;

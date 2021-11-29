@@ -1,0 +1,41 @@
+.form-control div {
+    padding: 1rem 0 0.75rem 0.5rem;
+}
+
+.form-control input, textarea, select {
+    display: block;
+    width: 100%;
+    padding: 6px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-indent: 0.5rem;
+}
+
+.create-button {
+    margin: 2rem 0;
+}
+
+%padding_fields {
+    @media screen and (max-width:425px) {
+        padding: 0.5rem 0;
+    }
+    @media screen and (max-width:768px) and (min-width:426px) {
+        padding: 0.7rem 0;
+    }
+    padding: 0.9rem 0;
+}
+
+.create-button button {
+    width: 100%;
+    @extend %padding_fields;
+    color: white;
+    font-weight: bold;
+    background-color: #5E35D6;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: medium;
+}

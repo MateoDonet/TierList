@@ -12,6 +12,8 @@ import { MenuComponent } from './menu/menu.component';
 import { MenuPhoneComponent } from './menu-phone/menu-phone.component';
 import { AddMediaComponent } from './add-media/add-media.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AddComponent } from './add-media/add/add.component';
+import { CreateComponent } from './add-media/create/create.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MenuComponent,
     MenuPhoneComponent,
     AddMediaComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AddComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

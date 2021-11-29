@@ -19,27 +19,27 @@ input {
 
 .flex {
     display: flex;
-    align-items: center;
-}
-
-%flex {
-    display: flex;
 }
 
 .flex-x-center {
-    @extend %flex;
+    display: flex;
     justify-content: center;
 }
 
-.flex-x-y-center {
-    @extend %flex;
-    justify-content: center;
+.flex-x-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.flex-y-center {
+    display: flex;
     align-items: center;
 }
 
-.flex-y-bottom {
-    @extend %flex;
-    align-items: flex-start;
+.flex-x-y-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .h-100vh {

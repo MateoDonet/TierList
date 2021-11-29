@@ -1,0 +1,18 @@
+input {
+    height: 27px;
+    border: 1px solid #343751;
+    text-indent: 0.7rem;
+}
+
+button {
+    background-color: #343751;
+    border: 2px solid #343751;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.search {
+    padding-top: 1rem;
+}

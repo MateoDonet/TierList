@@ -1,0 +1,38 @@
+<div class="flex-x-y-center">
+    <form (ngSubmit)="register()" [formGroup]="mediaCreateForm">
+        <div class="form-control">
+            <div>Titre</div>
+            <input type="text" placeholder="Titre" formControlName="media_titre">
+        </div>
+        <div class="form-control">
+            <div>Description</div>
+            <textarea cols="30" rows="5" placeholder="Résumé du média" formControlName="media_description"></textarea>
+        </div>
+        <div class="form-control">
+            <div>Catégorie</div>
+            <select class="form-control" formControlName="media_categ_id">
+                <option value="{{categorie.categ_id}}" *ngFor="let categorie of categories">{{categorie.categ_label}}</option>
+            </select>
+        </div>
+        <div class="form-control">
+            <div>Etat</div>
+            <select class="form-control" formControlName="media_etat">
+                <option value="1">En cours</option>
+                <option value="2">Terminé</option>
+            </select>
+        </div>
+        <div class="form-control">
+            <div>Tier</div>
+            <select class="form-control" formControlName="uml_tier_id">
+                <option value="{{tier.tier_id}}" *ngFor="let tier of tiers">{{tier.tier_label}}</option>
+            </select>
+        </div>
+        <div class="form-control">
+            <div>Avancement</div>
+            <input type="text" placeholder="Avancement" formControlName="uml_avancement">
+        </div>
+        <div class="flex-x-center create-button">
+            <button type="submit" [disabled]="mediaCreateForm.invalid">Create</button>
+        </div>
+    </form>
+</div>

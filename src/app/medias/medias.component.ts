@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaService } from '../shared/services/media.service';
 
-import { environment } from '../../environments/environment';
-
 @Component({
   selector: 'app-medias',
   templateUrl: './medias.component.html',
