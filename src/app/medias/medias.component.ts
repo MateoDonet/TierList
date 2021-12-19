@@ -16,7 +16,7 @@ export class MediasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.mediaService.getMedias().subscribe(data => {
+    this.mediaService.getUserMedias().subscribe(data => {
       this.medias = data;
     });
   }

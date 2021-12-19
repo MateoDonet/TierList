@@ -15,8 +15,9 @@ const routes: Routes = [
   { path: 'mes-medias', component: MediasComponent },
   { path: 'media', component: AddMediaComponent,
     children: [
+      { path: '', redirectTo: 'add', pathMatch: 'full' },
       { path: 'add', component: AddComponent },
-      { path: 'create', component: CreateComponent }
+      { path: 'create-and-add', component: CreateComponent }
     ]
   },
   { path: '**', component: PageNotFoundComponent }

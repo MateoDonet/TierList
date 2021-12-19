@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategorieService } from 'src/app/shared/services/categorie.service';
+import { MediaService } from 'src/app/shared/services/media.service';
 import { TagService } from 'src/app/shared/services/tag.service';
 import { TierService } from 'src/app/shared/services/tier.service';
-import { UtilisateurMediaService } from 'src/app/shared/services/utilisateur.media.service';
 
 @Component({
   selector: 'app-create',
@@ -31,7 +31,7 @@ export class CreateComponent implements OnInit {
     private categorieService: CategorieService,
     private tierService: TierService,
     private tagService: TagService,
-    private utilisateurMediaService: UtilisateurMediaService,
+    private mediaService: MediaService,
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder
@@ -75,7 +75,7 @@ export class CreateComponent implements OnInit {
   }
 
   register(): void {
-    this.utilisateurMediaService.postUtilisateurMedias(
+    this.mediaService.createMediaAndAddInList(
       this.mediaTitreCtrl.value,
       this.mediaDescriptionCtrl.value,
       '',
