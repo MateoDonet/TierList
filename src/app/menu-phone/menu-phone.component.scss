@@ -1,5 +1,7 @@
+@import "../shared/variables";
+
 .menu {
-    background-color: #343751;
+    background-color: $c2;
     color: white;
     width: 100%;
     @media screen and (max-width:709px) {

@@ -13,4 +13,8 @@ export class MediaService {
   getMedias(): any {
     return this.http.get(environment.tierListAPI + "mediasFromUtilisateurList/" + localStorage.u_id);
   }
+
+  searchMedia(titre: string): any {
+    return this.http.get(environment.tierListAPI + "medias/" + titre);
+  }
 }

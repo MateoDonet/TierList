@@ -9,6 +9,7 @@ import { MediaService } from '../shared/services/media.service';
 export class MediasComponent implements OnInit {
 
   medias: any = null;
+  filter: boolean = true;
 
   constructor(
     private mediaService: MediaService

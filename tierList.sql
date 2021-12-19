@@ -15,6 +15,12 @@ CREATE TABLE tier (
 	CONSTRAINT PK_Tier primary key (tier_id)
 ); ALTER TABLE tier OWNER TO tierlist;
 
+CREATE TABLE tag (
+	tag_id serial not null,
+	tag_label CHARACTER VARYING,
+	CONSTRAINT PK_Tag primary key (tag_id)
+); ALTER TABLE tag OWNER TO tierlist;
+
 CREATE TABLE categorie (
 	categ_id serial not null,
 	categ_label CHARACTER VARYING,
@@ -26,9 +32,11 @@ CREATE TABLE media (
 	media_titre CHARACTER VARYING,
 	media_description CHARACTER VARYING,
 	media_img CHARACTER VARYING,
+	media_tag_id INT not null,
 	media_etat INT, -- 1 : En cours | 2 : Terminé
     media_categ_id INT not null,
 	CONSTRAINT PK_Media primary key (media_id),
+	CONSTRAINT FK_Media_Tag foreign key (media_tag_id) REFERENCES tag(tag_id) ON UPDATE CASCADE ON DELETE CASCADE,
 	CONSTRAINT FK_Media_Categorie foreign key (media_categ_id) REFERENCES categorie(categ_id) ON UPDATE CASCADE ON DELETE CASCADE
 ); ALTER TABLE media OWNER TO tierlist;
 
@@ -57,6 +65,27 @@ INSERT INTO tier (tier_label) VALUES
 ('E'),
 ('F');
 
+INSERT INTO tag (tag_label) VALUES 
+('Action'),
+('Adventure'),	
+('Comedy'),	
+('Combat'),	
+('Drama'),	
+('Ecchi'),
+('Fantasy'),	
+('Harem'),
+('Historical'),	
+('Horror'),	
+('Isekai'),
+('Martial arts'),	
+('Psychological'),	
+('Romance'),	
+('School life'),
+('Sci fi'),
+('Shounen'),	
+('Sports'),
+('Tragedy');
+
 INSERT INTO categorie (categ_label) VALUES 
 ('série'),
 ('film'),
@@ -66,8 +95,11 @@ INSERT INTO categorie (categ_label) VALUES
 ('BD'),
 ('Comics');
 
-INSERT INTO media (media_titre, media_description, media_img, media_etat, media_categ_id) VALUES 
-('Brooklyn Nine-Nine', 'Cette comédie chorale suit les personnages et les affaires d un commissariat de Brooklyn, loin des dangers et des affaires plus spectaculaires du très chic Manhattan.', '', 2, 2);
+INSERT INTO media (media_titre, media_description, media_img, media_tag_id, media_etat, media_categ_id) VALUES 
+('Brooklyn Nine-Nine', 'Cette comédie chorale suit les personnages et les affaires d un commissariat de Brooklyn, loin des dangers et des affaires plus spectaculaires du très chic Manhattan.', '', 1, 2, 1),
+('Hunter x Hunter', 'Un animé légendaire', '', 1, 2, 3),
+('S.W.A.T.', '', '', 1, 2, 2),
+('One Piece', 'Un animé légendaire sur les pirates', '', 2, 1, 3);
 
 INSERT INTO utilisateur_media_list (uml_u_id, uml_media_id, uml_tier_id, uml_avancement) VALUES
 (2, 1, 1, 'Saison 7 Episode final');
@@ -76,6 +108,8 @@ INSERT INTO utilisateur_media_list (uml_u_id, uml_media_id, uml_tier_id, uml_ava
 CREATE OR REPLACE FUNCTION mediaAndUtilisateurListAdd(
     prm_media_titre CHARACTER VARYING, 
 	prm_media_description CHARACTER VARYING, 
+	prm_media_img CHARACTER VARYING, 
+	prm_media_tag_id INT, 
 	prm_media_etat INT, 
 	prm_media_categ_id INT,
 	prm_user_id INT,
@@ -91,11 +125,15 @@ BEGIN
 	INSERT INTO media(
 		media_titre, 
 		media_description, 
+		media_img,
+		media_tag_id,
 		media_etat, 
 		media_categ_id
 	) VALUES (
 		prm_media_titre,
 		prm_media_description,
+		prm_media_img,
+		prm_media_tag_id,
 		prm_media_etat,
 		prm_media_categ_id
 	)
@@ -117,4 +155,4 @@ BEGIN
 END; 
 $body$
 LANGUAGE plpgsql volatile;
-ALTER FUNCTION mediaAndUtilisateurListAdd(CHARACTER VARYING, CHARACTER VARYING, INT, INT, INT, INT, CHARACTER VARYING) OWNER TO tierlist;
+ALTER FUNCTION mediaAndUtilisateurListAdd(CHARACTER VARYING, CHARACTER VARYING, CHARACTER VARYING, INT, INT, INT, INT, INT, CHARACTER VARYING) OWNER TO tierlist;

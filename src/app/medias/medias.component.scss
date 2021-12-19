@@ -1,68 +1,69 @@
-%tier {
-    width: fit-content;
-    padding: 0 0.5rem;
-    margin: 0.4rem 0;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold
+@import "../shared/variables";
+
+.filter-container {
+    margin: 2rem 0;
 }
 
-.S_tier {
-    @extend %tier;
-    background-color: rgba(218, 141, 0, 0.719);
-    color: white
-}
-
-.A_tier {
-    @extend %tier;
-    background-color: rgba(218, 0, 0, 0.719);
-}
-
-.B_tier {
-    @extend %tier;
-    background-color: rgba(142, 218, 0, 0.719);
-}
-
-.C_tier {
-    @extend %tier;
-    border: 2px solid rgba(97, 255, 229, 0.719);
-}
-
-.D_tier {
-    @extend %tier;
-    background-color: rgba(0, 76, 218, 0.719);
-}
-
-.E_tier {
-    @extend %tier;
-    background-color: rgba(131, 0, 218, 0.719);
-}
-
-.F_tier {
-    @extend %tier;
-    background-color: rgba(165, 42, 42, 0.753);
-}
-
-.lastMedia {
-    @media screen and (max-width:425px) {
-        margin-bottom: 48.38px;       
-    }
-    margin: 0;
-}
-
-.media {
-    padding: 0.7rem;
-}
-
-.title {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.list-header {
-    background-color: #41445a;
+.filter-state {
+    padding: 0.75rem 0 0.25rem 0;
+    border: 1px solid $c1;
+    border-radius: 10px 10px 0 0;
+    background-color: $c3;
     color: white;
-    padding: 0.8rem;
-    font-weight: bold;
-    font-size: large;
+    text-indent: 0.5rem;
 }
+
+    .filter-state:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+.filters {
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px solid $c5;
+    border-radius: 0 0 5px 5px;
+    background-color: whitesmoke;
+    color: black;
+}
+
+.filter-option {
+    margin: 0.5rem 1rem 0.5rem 0;
+}
+
+    .filter-option label {
+        margin-right: 0.25rem;
+    }
+
+    %padding_fields {
+        @media screen and (max-width:768px) {
+            padding: 0.25rem 0;
+        }
+        padding: 0.5rem 0;
+    }
+    
+    .filter-option select {
+        @extend %padding_fields;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+.button button {
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: bold;
+    background-color: $cButton;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: medium;
+}
+
+    .button button:hover {
+        cursor: pointer;
+    }

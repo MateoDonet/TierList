@@ -1,11 +1,24 @@
+@import "../../shared/variables";
+
+.container {
+    width: 90%;
+}
+
 .form-control div {
     padding: 1rem 0 0.75rem 0.5rem;
+}
+
+%padding_fields {
+    @media screen and (max-width:768px) {
+        padding: 0.5rem 0;
+    }
+    padding: 0.7rem 0;
 }
 
 .form-control input, textarea, select {
     display: block;
     width: 100%;
-    padding: 6px 0;
+    @extend %padding_fields;
     font-size: 14px;
     line-height: 1.5;
     color: #555;
@@ -16,26 +29,20 @@
 }
 
 .create-button {
-    margin: 2rem 0;
-}
-
-%padding_fields {
+    margin-top: 2rem;
     @media screen and (max-width:425px) {
-        padding: 0.5rem 0;
+        margin-bottom: $phone_menu_height + 20px;
     }
-    @media screen and (max-width:768px) and (min-width:426px) {
-        padding: 0.7rem 0;
-    }
-    padding: 0.9rem 0;
+    margin-bottom: 1rem;
 }
 
-.create-button button {
-    width: 100%;
-    @extend %padding_fields;
-    color: white;
-    font-weight: bold;
-    background-color: #5E35D6;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: medium;
-}
+    .create-button button {
+        width: 100%;
+        @extend %padding_fields;
+        color: white;
+        font-weight: bold;
+        background-color: $cButton;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: medium;
+    }

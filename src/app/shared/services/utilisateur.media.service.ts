@@ -10,11 +10,13 @@ export class UtilisateurMediaService {
 
   constructor(private http: HttpClient) { }
 
-  postUtilisateurMedias(media_titre, media_description, media_etat, media_categ_id, user_id, uml_tier_id, uml_avancement): any {
+  postUtilisateurMedias(media_titre, media_description, media_img, media_tag_id, media_etat, media_categ_id, user_id, uml_tier_id, uml_avancement): any {
     return this.http.post(environment.tierListAPI + "mediaIntoMediaAndUtilisateurList/",
         {
             "media_titre" : media_titre, 
             "media_description" : media_description, 
+            "media_img" : media_img, 
+            'media_tag_id': media_tag_id,
             "media_etat" : media_etat, 
             "media_categ_id" : media_categ_id, 
             "user_id" : user_id, 

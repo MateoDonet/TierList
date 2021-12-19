@@ -1,5 +1,8 @@
-$primary :whitesmoke;
-$secondary :white;
+@import "../shared/variables";
+
+.bc-login {
+    background-color: $c1;
+}
 
 .authentification {
     @media screen and (max-width:425px) {
@@ -12,7 +15,7 @@ $secondary :white;
     }
     height: 400px;
     width: 400px;
-    background-color: $secondary;
+    background-color: $c8;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -59,7 +62,7 @@ $secondary :white;
                 @extend %padding_fields;
                 color: white;
                 font-weight: bold;
-                background-color: #5E35D6;
+                background-color: $cButton;
                 border-radius: 5px;
             }
 

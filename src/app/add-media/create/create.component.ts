@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategorieService } from 'src/app/shared/services/categorie.service';
+import { TagService } from 'src/app/shared/services/tag.service';
 import { TierService } from 'src/app/shared/services/tier.service';
 import { UtilisateurMediaService } from 'src/app/shared/services/utilisateur.media.service';
 
@@ -13,9 +14,12 @@ import { UtilisateurMediaService } from 'src/app/shared/services/utilisateur.med
 export class CreateComponent implements OnInit {
   categories: [];
   tiers: [];
+  tags: [];
 
   mediaTitreCtrl: FormControl;
   mediaDescriptionCtrl: FormControl;
+  mediaImgCtrl: FormControl;
+  mediaTagIdCtrl: FormControl;
   mediaCategIdCtrl: FormControl;
   mediaEtatCtrl: FormControl;
   umlTierIdCtrl: FormControl;
@@ -26,6 +30,7 @@ export class CreateComponent implements OnInit {
   constructor(
     private categorieService: CategorieService,
     private tierService: TierService,
+    private tagService: TagService,
     private utilisateurMediaService: UtilisateurMediaService,
     private router: Router,
     private route: ActivatedRoute,
@@ -41,12 +46,18 @@ export class CreateComponent implements OnInit {
       this.tiers = tiersFrmSrvc;      
     });
 
+    this.tagService.getTags().subscribe(tagsFrmSrvc => {
+      this.tags = tagsFrmSrvc;
+    });
+
     this.initForm();
   }
 
   initForm() {
     this.mediaTitreCtrl = this.fb.control('', Validators.required);
     this.mediaDescriptionCtrl = this.fb.control('', Validators.required);
+    // this.mediaImgCtrl = this.fb.control('', Validators.required);
+    this.mediaTagIdCtrl = this.fb.control(1, Validators.required);
     this.mediaCategIdCtrl = this.fb.control(1, Validators.required);
     this.mediaEtatCtrl = this.fb.control(1, Validators.required);
     this.umlTierIdCtrl = this.fb.control(1, Validators.required);
@@ -54,6 +65,8 @@ export class CreateComponent implements OnInit {
     this.mediaCreateForm = this.fb.group({
       media_titre: this.mediaTitreCtrl,
       media_description: this.mediaDescriptionCtrl,
+      // media_img: this.mediaImgCtrl,
+      media_tag_id: this.mediaTagIdCtrl,
       media_categ_id: this.mediaCategIdCtrl,
       media_etat: this.mediaEtatCtrl,
       uml_tier_id: this.umlTierIdCtrl,
@@ -65,6 +78,8 @@ export class CreateComponent implements OnInit {
     this.utilisateurMediaService.postUtilisateurMedias(
       this.mediaTitreCtrl.value,
       this.mediaDescriptionCtrl.value,
+      '',
+      this.mediaTagIdCtrl.value,
       this.mediaEtatCtrl.value,
       this.mediaCategIdCtrl.value,
       localStorage.u_id,
