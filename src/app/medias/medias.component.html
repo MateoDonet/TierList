@@ -3,7 +3,7 @@
 <div class="container">
     <div class="filter-container">
         <div class="filter-state" (click)="filter = !filter">
-            <div>Filtres</div>
+            <div>Option de Tri / Filtre</div>
         </div>
         <div class="filters" *ngIf="filter">
             <div class="filter-option">
@@ -30,18 +30,20 @@
         </div>
     </div>
 
-    <div class="grid">
-        <div *ngFor="let media of medias; let isLast = last">
-            <div class="card">
-                <div class="card-content">
-                    <div class="title">{{media.media_titre}}</div>
-                    <div class="{{media.tier_label}}_tier">{{media.tier_label}}</div>
-                    <div>{{media.media_description}}</div>
+    <div *ngFor="let media_by_tier of medias_by_tier; let isLast = last">
+        <div>{{media_by_tier.tier_label}} tier</div>
+        <div class="media_by_tier_container grid">
+            <div *ngFor="let media_of_tier of media_by_tier.medias_of_tier">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="title">{{media_of_tier.media_titre}}</div>
+                        <div class="{{media_by_tier.tier_label}}_tier">{{media_by_tier.tier_label}}</div>
+                        <div>{{media_of_tier.media_description}}</div>
+                    </div>
                 </div>
             </div>
-
-            <div *ngIf="isLast" class="lastMedia"></div>
         </div>
+        <div *ngIf="isLast" class="lastMedia"></div>
     </div>
 </div>
 

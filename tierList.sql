@@ -98,7 +98,7 @@ INSERT INTO categorie (categ_label) VALUES
 INSERT INTO media (media_titre, media_description, media_img, media_tag_id, media_etat, media_categ_id) VALUES 
 ('Brooklyn Nine-Nine', 'Cette comédie chorale suit les personnages et les affaires d un commissariat de Brooklyn, loin des dangers et des affaires plus spectaculaires du très chic Manhattan.', '', 1, 2, 1),
 ('Hunter x Hunter', 'Un animé légendaire', '', 1, 2, 3),
-('S.W.A.T.', '', '', 1, 2, 2),
+('S.W.A.T.', '', '', 1, 2, 1),
 ('One Piece', 'Un animé légendaire sur les pirates', '', 2, 1, 3);
 
 INSERT INTO utilisateur_media_list (uml_u_id, uml_media_id, uml_tier_id, uml_avancement) VALUES

@@ -1,0 +1,81 @@
+@import "../../../shared/variables";
+
+.detail-add-media {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    max-width: 90%;
+    @media screen and (max-height:490px) {
+        overflow-y: scroll;
+    }
+    max-height: 80%;
+    border-radius: 10px;
+    background-color: $c7;
+    box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
+}
+
+.quit {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    height: 20px;
+}
+
+.quit:hover {
+    cursor: pointer;
+}
+
+.detail-add-media-content {
+    // width: 100%;
+    margin: 1rem;
+    margin-top: 2rem;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.categorie {
+    font-size: 20px;
+    font-weight: bold;
+    color: $c3;
+}
+
+.form-control div {
+    padding: 1rem 0 0.75rem 0.5rem;
+}
+
+.form-control input, textarea, select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-indent: 0.5rem;
+}
+
+.create-button {
+    margin-top: 2rem;
+    @media screen and (max-width:425px) {
+        margin-bottom: $phone_menu_height + 20px;
+    }
+    margin-bottom: 1rem;
+}
+
+    .create-button button {
+        width: 100%;
+        padding: 0.5rem 0;
+        color: white;
+        font-weight: bold;
+        background-color: $cButton;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: medium;
+    }

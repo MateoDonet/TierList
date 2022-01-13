@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MediaService } from 'src/app/shared/services/media.service';
@@ -8,7 +8,7 @@ import { MediaService } from 'src/app/shared/services/media.service';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddComponent implements OnInit {
+export class AddComponent implements OnInit, OnChanges {
   medias: [];
 
   mediaTitreCtrl: FormControl;
@@ -22,11 +22,15 @@ export class AddComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initForm();
+    // this.initForm();
 
-    this.mediaService.searchMedia('').subscribe(medias => {
+    this.mediaService.getMedias().subscribe(medias => {
       this.medias = medias;
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
   }
 
   initForm() {
@@ -41,5 +45,4 @@ export class AddComponent implements OnInit {
       this.medias = medias;
     });
   }
-
 }

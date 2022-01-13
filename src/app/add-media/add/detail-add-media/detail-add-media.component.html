@@ -1,0 +1,26 @@
+<div class="detail-add-media">
+    <img src="assets/Images/quit.png" alt="quit" class="quit" routerLink="../">
+    <div class="detail-add-media-content">
+        <div class="title">{{media.media_titre}}</div>
+        <div class="categorie">{{media.categ_label}}</div>
+        <div>{{media.media_description}}</div>
+
+        <hr style="margin-top: 1.5rem;">
+
+        <form ><!--(ngSubmit)="register()" [formGroup]="mediaCreateForm"-->
+            <div class="form-control">
+                <div>Tier</div>
+                <select class="form-control" ><!--formControlName="media_etat"-->
+                    <option value="S">S</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <div>Avancement</div>
+                <input type="text" placeholder="Où en êtes vous ?" ><!--formControlName="media_titre"-->
+            </div>
+            <div class="flex-x-center create-button">
+                <button type="submit" >Ajouter</button><!--[disabled]="mediaCreateForm.invalid"-->
+            </div>
+        </form>
+    </div>
+</div>

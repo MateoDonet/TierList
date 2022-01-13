@@ -14,6 +14,7 @@ import { AddMediaComponent } from './add-media/add-media.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AddComponent } from './add-media/add/add.component';
 import { CreateComponent } from './add-media/create/create.component';
+import { DetailAddMediaComponent } from './add-media/add/detail-add-media/detail-add-media.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreateComponent } from './add-media/create/create.component';
     AddMediaComponent,
     PageNotFoundComponent,
     AddComponent,
-    CreateComponent
+    CreateComponent,
+    DetailAddMediaComponent
   ],
   imports: [
     BrowserModule,

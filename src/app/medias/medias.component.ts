@@ -8,8 +8,8 @@ import { MediaService } from '../shared/services/media.service';
 })
 export class MediasComponent implements OnInit {
 
-  medias: any = null;
-  filter: boolean = true;
+  medias_by_tier: any = null;
+  filter: boolean;
 
   constructor(
     private mediaService: MediaService
@@ -17,7 +17,7 @@ export class MediasComponent implements OnInit {
 
   ngOnInit(): void {
     this.mediaService.getUserMedias().subscribe(data => {
-      this.medias = data;
+      this.medias_by_tier = data;
     });
   }
 
