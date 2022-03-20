@@ -30,21 +30,56 @@
         </div>
     </div>
 
-    <div *ngFor="let media_by_tier of medias_by_tier; let isLast = last">
-        <div>{{media_by_tier.tier_label}} tier</div>
-        <div class="media_by_tier_container grid">
-            <div *ngFor="let media_of_tier of media_by_tier.medias_of_tier">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="title">{{media_of_tier.media_titre}}</div>
-                        <div class="{{media_by_tier.tier_label}}_tier">{{media_by_tier.tier_label}}</div>
-                        <div>{{media_of_tier.media_description}}</div>
-                    </div>
-                </div>
-            </div>
+    <div class="S_bc">
+        <div class="tier" (click)="S_tier = !S_tier">S tier</div>
+        <div class="grid" *ngIf="S_tier">
+            <app-media-card [media]="media" *ngFor="let media of medias_S_tier"></app-media-card>
         </div>
-        <div *ngIf="isLast" class="lastMedia"></div>
     </div>
+
+    <div class="A_bc">
+        <div class="tier" (click)="A_tier = !A_tier; getMediasOfATier()">A tier</div>
+        <div class="grid" *ngIf="A_tier">
+            <app-media-card [media]="media" *ngFor="let media of medias_A_tier"></app-media-card>
+        </div>
+    </div>
+
+    <div class="B_bc">
+        <div class="tier" (click)="B_tier = !B_tier; getMediasOfBTier()">B tier</div>
+        <div class="grid" *ngIf="B_tier">
+            <app-media-card [media]="media" *ngFor="let media of medias_B_tier"></app-media-card>
+        </div>
+    </div>
+
+    <div class="C_bc">
+        <div class="tier" (click)="C_tier = !C_tier; getMediasOfCTier()">C tier</div>
+        <div class="grid" *ngIf="C_tier">
+            <app-media-card [media]="media" *ngFor="let media of medias_C_tier"></app-media-card>
+        </div>
+    </div>
+
+    <div class="D_bc">
+        <div class="tier" (click)="D_tier = !D_tier; getMediasOfDTier()">D tier</div>
+        <div class="grid" *ngIf="D_tier">
+            <app-media-card [media]="media" *ngFor="let media of medias_D_tier"></app-media-card>
+        </div>
+    </div>
+
+    <div class="E_bc">
+        <div class="tier" (click)="E_tier = !E_tier; getMediasOfETier()">E tier</div>
+        <div class="grid" *ngIf="E_tier">
+            <app-media-card [media]="media" *ngFor="let media of medias_E_tier"></app-media-card>
+        </div>
+    </div>
+
+    <div class="F_bc">
+        <div class="tier" (click)="F_tier = !F_tier; getMediasOfFTier()">F tier</div>
+        <div class="grid" *ngIf="F_tier">
+            <app-media-card [media]="media" *ngFor="let media of medias_F_tier"></app-media-card>
+        </div>
+    </div>
+
+    <div class="lastMedia"></div>
 </div>
 
 <app-menu-phone></app-menu-phone>

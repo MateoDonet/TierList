@@ -1,30 +1,32 @@
-<div>
-    <form class="flex-x-y-center search" ><!--(ngSubmit)="search()" [formGroup]="mediaSearchForm"-->
-        <input type="text" placeholder="Chercher"><!--formControlName="media_titre"-->
-        <button type="submit">
-            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="10.5" cy="7.5" r="6.75" stroke="white" stroke-width="2"/>
-                <line x1="5.76822" y1="12.6402" x2="0.768221" y2="18.6402" stroke="white" stroke-width="3"/>
-            </svg>
-        </button>
-    </form>
-</div>
+<div [ngClass]="{'blur': isVisible}">
+    <div>
+        <form class="flex-x-y-center search" ><!--(ngSubmit)="search()" [formGroup]="mediaSearchForm"-->
+            <input type="text" placeholder="Chercher"><!--formControlName="media_titre"-->
+            <button type="submit">
+                <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10.5" cy="7.5" r="6.75" stroke="white" stroke-width="2"/>
+                    <line x1="5.76822" y1="12.6402" x2="0.768221" y2="18.6402" stroke="white" stroke-width="3"/>
+                </svg>
+            </button>
+        </form>
+    </div>
 
-<div class="grid">
-    <div *ngFor="let media of medias; let isLast = last">
-        <div class="card" [routerLink]="[media.media_id]">
-            <div class="card-content">
-                <div class="title">{{media.media_titre}}</div>
-                <div class="{{media.tier_label}}_tier">{{media.tier_label}}</div>
-                <div class="categorie">{{media.categ_label}}</div>
-                <div>{{media.media_description}}</div>
+    <div class="grid">
+        <div *ngFor="let media of medias; let isLast = last">
+            <div class="card" (click)="setMediaToAdd(media)"><!--[routerLink]="[media.media_id]"-->
+                <div class="card-content">
+                    <div class="title">{{media.media_titre}}</div>
+                    <div class="media-sub-info">
+                        <div class="categorie">{{media.categ_label}}</div>
+                        <div class="{{media.tier_label}}_tier">{{media.tier_label}}</div>
+                    </div>
+                    <div>{{media.media_description}}</div>
+                </div>
             </div>
-        </div>
 
-        <div *ngIf="isLast" class="lastMedia"></div>
+            <div *ngIf="isLast" class="lastMedia"></div>
+        </div>
     </div>
 </div>
 
-<div>
-    <router-outlet></router-outlet>
-</div>
+<app-detail-add-media *ngIf="isVisible" [media]="mediaToAdd" (closePopupEvent)="setVisible($event)"></app-detail-add-media>

@@ -10,6 +10,8 @@ import { MediaService } from 'src/app/shared/services/media.service';
 })
 export class AddComponent implements OnInit, OnChanges {
   medias: [];
+  mediaToAdd: any = null;
+  isVisible: boolean;
 
   mediaTitreCtrl: FormControl;
   mediaSearchForm: FormGroup;
@@ -44,5 +46,14 @@ export class AddComponent implements OnInit, OnChanges {
     this.mediaService.searchMedia(this.mediaTitreCtrl.value).subscribe(medias => {
       this.medias = medias;
     });
+  }
+
+  setMediaToAdd(media): any {
+    this.mediaToAdd = media;
+    this.isVisible = true;
+  }
+
+  setVisible(param): any {
+    this.isVisible = param;
   }
 }

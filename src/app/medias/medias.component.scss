@@ -54,10 +54,6 @@
         border-radius: 4px;
     }
 
-.media_by_tier_container {
-    
-}
-
 .button button {
     padding: 0.5rem 1rem;
     color: white;
@@ -70,4 +66,53 @@
 
     .button button:hover {
         cursor: pointer;
+    }
+
+.tier {
+    color: white;
+    font-weight: bold;
+}
+
+    .tier:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+%tier_container {
+    padding: 0.5rem
+}
+
+    .S_bc {
+        @extend %tier_container;
+        background-color: rgba(218, 141, 0, 0.719);
+    }
+
+    .A_bc {
+        @extend %tier_container;
+        background-color: rgba(218, 0, 0, 0.719);
+    }
+
+    .B_bc {
+        @extend %tier_container;
+        background-color: rgba(121, 187, 0, 0.719);
+    }
+
+    .C_bc {
+        @extend %tier_container;
+        background-color: rgba(97, 255, 229, 0.719);
+    }
+
+    .D_bc {
+        @extend %tier_container;
+        background-color: rgba(0, 76, 218, 0.719);
+    }
+
+    .E_bc {
+        @extend %tier_container;
+        background-color: rgba(131, 0, 218, 0.719);
+    }
+
+    .F_bc {
+        @extend %tier_container;
+        background-color: rgba(165, 42, 42, 0.753);
     }
