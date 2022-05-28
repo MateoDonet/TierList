@@ -51,13 +51,13 @@ export class DetailAddMediaComponent implements OnInit {
 
   register(): any {
     this.mediaService.addMediaInUserList(
-      localStorage.u_id,
       this.media.media_id,
       this.umlTierIdCtrl.value,
       this.umlAvancementCtrl.value
     ).subscribe(_ => {
       // il serait possible de rediriger avec l'id de liaison retourner ou l'id du media
-      // this.router.navigate(['../'], { relativeTo: this.route });
+      this.router.navigate(['../'], { relativeTo: this.route });
+      this.closePopup(false);
     })
   }
 

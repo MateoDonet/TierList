@@ -15,25 +15,40 @@ export class MediaService {
   }
 
   getUserMediasOfTier(tier: string): any {
-    return this.http.get(environment.tierListAPI + "mediasFromUtilisateurList/" + localStorage.u_id + "/" + tier);
+    return this.http.get(environment.tierListAPI + "mediasFromUtilisateurListByTier/" + localStorage.u_id + "/" + tier);
   }
 
-  getMedia(id: number): any {
-    return this.http.get(environment.tierListAPI + "media/id/" + id);
+  getNbMediasForUserWithTier(): any {
+    return this.http.get(environment.tierListAPI + "nbMediasFromUtilisateurListByTier/" + localStorage.u_id);
   }
 
-  searchMedia(titre: string): any {
+  getMediaOfUserByIdAndTier(media_id: number, uml_tier_id: number): any {
+    return this.http.get(environment.tierListAPI + "mediaFromUtilisateurListByIdAndTier/" + localStorage.u_id + "/" + media_id + "/" + uml_tier_id);
+  }
+
+  deleteMediaOfUser(media_id, uml_tier_id): any {
+    return this.http.delete(environment.tierListAPI + "mediaFromUtilisateurList/" + localStorage.u_id + "/" + media_id + "/" + uml_tier_id);
+  }
+
+  searchMedia(titre: String): any {
     return this.http.get(environment.tierListAPI + "medias/titre/" + titre);
   }
 
-  checkMediaIsIntoUtilisateurList(media_id, uml_u_id): any {
-    return this.http.get(environment.tierListAPI + "checkMediaIsIntoUtilisateurList/" + uml_u_id + "/" + media_id);
-  }
-
-  addMediaInUserList(uml_u_id, uml_media_id, uml_tier_id, uml_avancement): any {
+  addMediaInUserList(uml_media_id, uml_tier_id, uml_avancement): any {
     return this.http.post(environment.tierListAPI + "mediaIntoUtilisateurList/",
       {
-        "uml_u_id" : uml_u_id, 
+        "uml_u_id" : localStorage.u_id, 
+        "uml_media_id" : uml_media_id, 
+        "uml_tier_id" : uml_tier_id, 
+        "uml_avancement" : uml_avancement
+      }
+    );
+  }
+
+  updateMediaInUserList(uml_media_id, uml_tier_id, uml_avancement): any {
+    return this.http.put(environment.tierListAPI + "updateMediaFromUtilisateurList/",
+      {
+        "uml_u_id" : localStorage.u_id, 
         "uml_media_id" : uml_media_id, 
         "uml_tier_id" : uml_tier_id, 
         "uml_avancement" : uml_avancement

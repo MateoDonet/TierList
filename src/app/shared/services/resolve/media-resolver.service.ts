@@ -16,7 +16,8 @@ export class MediaResolverService implements Resolve<any> {
     state: RouterStateSnapshot
   ) {
     const id = +route.paramMap.get('id');
-    if(!id) return of(null);
-    return this.mediaService.getMedia(id);
+    const tier = +route.paramMap.get('tier');
+    if(!id || !tier) return of(null);
+    return this.mediaService.getMediaOfUserByIdAndTier(id, tier);
   }
 }

@@ -17,6 +17,11 @@ html, body, input {
         justify-content: center;
     }
 
+    .flex-x-space-between {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .flex-x-right {
         display: flex;
         justify-content: flex-end;
@@ -37,42 +42,49 @@ html, body, input {
     height: 100vh;
 }
 
-.container {
-    @media screen and (max-width:1200px) {
-        width: auto;
-        margin: 0 0.75rem;
-    }
-    width: 1200px;
-    margin: auto;
-}
+// .container {
+//     @media screen and (max-width:1200px) {
+//         width: auto;
+//         margin: 0 0.75rem;
+//     }
+//     width: 1200px;
+//     margin: auto;
+// }
 
-.grid {
-    margin-top: 1rem;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-}
+// .sub-container {
+//     margin-top: 1rem;
+//     border-radius: 10px;
+//     background-color: $c8;
+//     box-shadow: 0 1px 2px 2px rgba(102, 102, 102, 0.2), 0 1px 4px 0 rgba(102, 102, 102, 0.19);
+// }
 
-.card {
-    background: $c8;
-    height: 165px;
-    border-radius: 10px;
-    transition: all 500ms;
-    overflow: hidden;
-    box-shadow: 0 1px 2px 2px rgba(102, 102, 102, 0.2), 0 1px 4px 0 rgba(102, 102, 102, 0.19);
- }
-  
-    .card:hover {
-        transform: translateY(-3px) scale(1.15);
-        background-color: $c5;
-        cursor: pointer;
-    }
+// .grid {
+//     margin-top: 1rem;
+//     display: grid;
+//     gap: 1rem;
+//     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+// }
 
-    .card-content {
-        padding: 1rem;
-    }
+// .card {
+//     background: $c8;
+//     height: 165px;
+//     border-radius: 10px;
+//     transition: all 500ms;
+//     overflow: hidden;
+//     box-shadow: 0 1px 2px 2px rgba(102, 102, 102, 0.2), 0 1px 4px 0 rgba(102, 102, 102, 0.19);
+// }
 
-.lastMedia {
+//     .card:hover {
+//         transform: translateY(-3px) scale(1.15);
+//         background-color: $c5;
+//         cursor: pointer;
+//     }
+
+//     .card-content {
+//         padding: 1rem;
+//     }
+
+.phone-margin {
     @media screen and (max-width:768px) {
         margin-bottom: $phone_menu_height;       
     }
@@ -103,45 +115,105 @@ html, body, input {
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
-    color: white;
+    color: #495057;;
 }
 
     .S_tier {
         @extend %tier;
-        background-color: rgba(218, 141, 0, 0.719);
+        background-color: $cS
     }
 
     .A_tier {
         @extend %tier;
-        background-color: rgba(218, 0, 0, 0.719);
+        background-color: $cA
     }
 
     .B_tier {
         @extend %tier;
-        background-color: rgba(121, 187, 0, 0.719);
+        background-color: $cB
     }
 
     .C_tier {
         @extend %tier;
-        background-color: rgba(97, 255, 229, 0.719);
+        background-color: $cC
     }
 
     .D_tier {
         @extend %tier;
-        background-color: rgba(0, 76, 218, 0.719);
+        background-color: $cD
     }
 
     .E_tier {
         @extend %tier;
-        background-color: rgba(131, 0, 218, 0.719);
+        background-color: $cE
     }
 
     .F_tier {
         @extend %tier;
-        background-color: rgba(165, 42, 42, 0.753);
+        background-color: $cF
     }
 
 .blur {
     filter: blur(4px) brightness(90%);
     pointer-events: none;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: $c2;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -60px;
+    }
+
+    .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: $c2 transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    .tooltip:hover {
+        cursor: pointer;
+    }
+
+%button {
+    padding: 0.5rem 1rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+    %button:hover {
+        cursor: pointer;
+    }
+
+.button-action {
+    @extend %button;
+    background-color: green;
+}
+
+.button-cancel {
+    @extend %button;
+    background-color: brown;
 }

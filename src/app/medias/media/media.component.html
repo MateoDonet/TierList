@@ -1,7 +1,47 @@
 <app-menu></app-menu>
 
-<div class="container">
-    <p>media works!</p>
+<div [class]="deleteRequest ? 'blur': ''" class="container">
+    <div class="go-back">
+        <a routerLink="/mes-medias">
+            <img src="assets/Images/actions/back-button.png" alt="Go back" height="12px"> Revenir à mes médias
+        </a>
+    </div>
+    <div class="sub-container">
+        <div class="">
+            <!-- <div>
+                <img src="{{media.media_img}}" alt="">
+            </div> -->
+            <div class="media">
+                <div class="title">{{media.media_titre}}</div>
+                <div class="media-sub-info">
+                    <div class="categorie">{{media.categ_label}}</div>
+                    <div id="media_tier">{{media.tier_label}}</div>
+                </div>
+                <div><b>Description :</b> {{media.media_description}}</div>
+                <div class="avancement"><b>Avancement :</b> {{media.uml_avancement}}</div>
+            </div>
+        </div>
+        <div class="flex">
+            <div routerLink="edit">
+                <img src="assets/Images/actions/edit.png" alt="Edit" height="26px">
+            </div>
+            <div (click)="deleteRequest = !deleteRequest">
+                <img src="assets/Images/actions/trash.png" alt="Delete" height="26px">
+            </div>            
+        </div>
+    </div>
+
+    <div>
+        <router-outlet></router-outlet>
+    </div>
 </div>
 
 <app-menu-phone></app-menu-phone>
+
+<div class="delete" *ngIf="deleteRequest">
+    <div style="margin: 1rem;"><b>Voulez vous vraiment supprimer ce média ?</b></div>
+    <div class="flex-x-center">
+        <button class="button-action" (click)="delete()">Oui</button>
+        <button class="button-cancel" (click)="deleteRequest = !deleteRequest">Non</button>
+    </div>
+</div>

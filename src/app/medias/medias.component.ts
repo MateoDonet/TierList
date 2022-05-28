@@ -8,15 +8,13 @@ import { MediaService } from '../shared/services/media.service';
 })
 export class MediasComponent implements OnInit {
 
-  medias_S_tier: any = null;
-  medias_A_tier: any = null;
-  medias_B_tier: any = null;
-  medias_C_tier: any = null;
-  medias_D_tier: any = null;
-  medias_E_tier: any = null;
-  medias_F_tier: any = null;
-  
-  filter: boolean;
+  medias_S_tier_length: number;
+  medias_A_tier_length: number;
+  medias_B_tier_length: number;
+  medias_C_tier_length: number;
+  medias_D_tier_length: number;
+  medias_E_tier_length: number;
+  medias_F_tier_length: number;
 
   S_tier: boolean;
   A_tier: boolean;
@@ -26,54 +24,110 @@ export class MediasComponent implements OnInit {
   E_tier: boolean;
   F_tier: boolean;
 
+  medias_S_tier: any[] = [];
+  medias_A_tier: any[] = [];
+  medias_B_tier: any[] = [];
+  medias_C_tier: any[] = [];
+  medias_D_tier: any[] = [];
+  medias_E_tier: any[] = [];
+  medias_F_tier: any[] = [];
+
+  filter: boolean;
+
   constructor(
     private mediaService: MediaService
   ) { }
 
   ngOnInit(): void {
+    this.mediaService.getNbMediasForUserWithTier().subscribe(datas => {
+      this.getNbMediaOfTiers(datas);
+    });
+
     this.S_tier = true;
     this.getMediasOfSTier();
   }
 
+  getNbMediaOfTiers(datas: any[]) {
+    for(let data of datas) {
+      switch(data.tier_label) {
+        case 'S':
+          this.medias_S_tier_length = data.nb_media;
+          break;
+        case 'A':
+          this.medias_A_tier_length = data.nb_media;
+          break;
+        case 'B':
+          this.medias_B_tier_length = data.nb_media;
+          break;
+        case 'C':
+          this.medias_C_tier_length = data.nb_media;
+          break;
+        case 'D':
+          this.medias_D_tier_length = data.nb_media;
+          break;
+        case 'E':
+          this.medias_E_tier_length = data.nb_media;
+          break;
+        case 'F':
+          this.medias_F_tier_length = data.nb_media;
+          break;
+      }
+    }
+  }
+
   getMediasOfSTier() {
-    this.mediaService.getUserMediasOfTier("S").subscribe(data => {
-      this.medias_S_tier = data;
-    });
+    if(this.S_tier){
+      this.mediaService.getUserMediasOfTier("S").subscribe(data => {
+        this.medias_S_tier = data;
+      });
+    }
   }
 
   getMediasOfATier() {
-    this.mediaService.getUserMediasOfTier("A").subscribe(data => {
-      this.medias_A_tier = data;
-    });
+    if(this.A_tier){
+      this.mediaService.getUserMediasOfTier("A").subscribe(data => {
+        this.medias_A_tier = data;
+      });
+    }
   }
 
   getMediasOfBTier() {
-    this.mediaService.getUserMediasOfTier("B").subscribe(data => {
-      this.medias_B_tier = data;
-    });
+    if(this.B_tier){
+      this.mediaService.getUserMediasOfTier("B").subscribe(data => {
+        this.medias_B_tier = data;
+      });
+    }
   }
 
   getMediasOfCTier() {
-    this.mediaService.getUserMediasOfTier("C").subscribe(data => {
-      this.medias_C_tier = data;
-    });
+    if(this.C_tier){
+      this.mediaService.getUserMediasOfTier("C").subscribe(data => {
+        this.medias_C_tier = data;
+      });
+    }
   }
 
   getMediasOfDTier() {
-    this.mediaService.getUserMediasOfTier("D").subscribe(data => {
-      this.medias_D_tier = data;
-    });
+    if(this.D_tier){
+      this.mediaService.getUserMediasOfTier("D").subscribe(data => {
+        this.medias_D_tier = data;
+      });
+    }
   }
 
   getMediasOfETier() {
-    this.mediaService.getUserMediasOfTier("E").subscribe(data => {
-      this.medias_E_tier = data;
-    });
+    if(this.E_tier){
+      this.mediaService.getUserMediasOfTier("E").subscribe(data => {
+        this.medias_E_tier = data;
+      });
+    }
   }
 
   getMediasOfFTier() {
-    this.mediaService.getUserMediasOfTier("F").subscribe(data => {
-      this.medias_F_tier = data;
-    });
+    if(this.F_tier){
+      this.mediaService.getUserMediasOfTier("F").subscribe(data => {
+        this.medias_F_tier = data;
+      });
+    }
   }
 }

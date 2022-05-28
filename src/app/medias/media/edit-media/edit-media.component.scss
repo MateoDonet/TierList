@@ -1,0 +1,36 @@
+@import '../../../shared/variables';
+
+.edit-form {
+    padding: 0 1rem;
+    @media screen and (max-width:768px) {
+        margin-bottom: $phone_menu_height;       
+    }
+}
+
+.form-control div {
+    padding: 1rem 0 0.75rem 0.5rem;
+}
+
+%padding_fields {
+    @media screen and (max-width:768px) {
+        padding: 0.5rem 0;
+    }
+    padding: 0.7rem 0;
+}
+
+.form-control input, textarea, select {
+    display: block;
+    width: 100%;
+    @extend %padding_fields;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-indent: 0.5rem;
+}
+
+button {
+    margin: 1rem 2rem 1rem 0.05rem;
+}

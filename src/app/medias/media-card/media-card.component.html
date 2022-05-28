@@ -1,9 +1,9 @@
-<div class="card">
-    <div class="card-content" [routerLink]="['../media', media.media_id]">
+<div class="card bg-dark" [routerLink]="['../media', media.media_id, media.uml_tier_id]">
+    <div class="card-img-top d-flex justify-content-center" style="height: 320px;">
+        <img src="assets/Images/media/{{media.media_img}}" height="320" width="225" alt="{{media.media_titre}}">
+    </div>
+    <div class="card-body bg-light">
         <div class="title">{{media.media_titre}}</div>
-        <div class="media-sub-info">
-            <div class="categorie">{{media.categ_label}}</div>
-        </div>
-        <div>{{media.media_description}}</div>
+        <div class="categorie">{{media.categ_label}}</div>
     </div>
 </div>

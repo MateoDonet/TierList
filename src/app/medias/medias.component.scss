@@ -69,8 +69,7 @@
     }
 
 .tier {
-    color: white;
-    font-weight: bold;
+    color: black;
 }
 
     .tier:hover {
@@ -84,35 +83,35 @@
 
     .S_bc {
         @extend %tier_container;
-        background-color: rgba(218, 141, 0, 0.719);
+        background-color: $cS
     }
 
     .A_bc {
         @extend %tier_container;
-        background-color: rgba(218, 0, 0, 0.719);
+        background-color: $cA
     }
 
     .B_bc {
         @extend %tier_container;
-        background-color: rgba(121, 187, 0, 0.719);
+        background-color: $cB
     }
 
     .C_bc {
         @extend %tier_container;
-        background-color: rgba(97, 255, 229, 0.719);
+        background-color: $cC
     }
 
     .D_bc {
         @extend %tier_container;
-        background-color: rgba(0, 76, 218, 0.719);
+        background-color: $cD
     }
 
     .E_bc {
         @extend %tier_container;
-        background-color: rgba(131, 0, 218, 0.719);
+        background-color: $cE
     }
 
     .F_bc {
         @extend %tier_container;
-        background-color: rgba(165, 42, 42, 0.753);
+        background-color: $cF
     }

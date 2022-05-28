@@ -11,7 +11,7 @@ export class UtilisateurService {
   constructor(private http: HttpClient) { }
 
   utilisateurAuthentification(username, password): any {
-    return this.http.post(environment.tierListAPI + "utilisateur",
+    return this.http.post(environment.tierListAPI + "users/authentificate",
       {
         "u_username": username, "u_password": password 
       }

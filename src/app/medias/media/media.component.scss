@@ -1,0 +1,50 @@
+@import "../../shared/variables";
+
+.go-back{
+    margin-top: 1rem;
+    @media screen and (min-width:710px) {
+        margin-top: 2rem;
+    }
+}
+
+    .go-back a {
+        color: $c3;
+    }
+
+.media-container {
+    @media screen and (min-width:581px) {
+        display: flex;
+    }
+}
+
+.media {
+    padding: 1rem;
+}
+
+    .avancement {
+        padding-top: 0.5rem;
+    }
+
+.actions {
+    border-top: 1px solid $c5;
+    padding: 0.5rem 1rem;
+}
+
+    .actions div {
+        margin-right: 1.5rem;
+    }
+
+.delete {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 290px;
+    border-radius: 10px;
+    background-color: $c7;
+    box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
+}
+
+button {
+    margin: 0 2rem 1.25rem 2rem;
+}

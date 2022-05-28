@@ -17,6 +17,8 @@ import { CreateComponent } from './add-media/create/create.component';
 import { DetailAddMediaComponent } from './add-media/add/detail-add-media/detail-add-media.component';
 import { MediaComponent } from './medias/media/media.component';
 import { MediaCardComponent } from './medias/media-card/media-card.component';
+import { UserComponent } from './user/user.component';
+import { EditMediaComponent } from './medias/media/edit-media/edit-media.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { MediaCardComponent } from './medias/media-card/media-card.component';
     CreateComponent,
     DetailAddMediaComponent,
     MediaComponent,
-    MediaCardComponent
+    MediaCardComponent,
+    UserComponent,
+    EditMediaComponent
   ],
   imports: [
     BrowserModule,
