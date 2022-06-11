@@ -11,40 +11,32 @@
         color: $c3;
     }
 
-.media-container {
-    @media screen and (min-width:581px) {
-        display: flex;
+    .go-back a:hover {
+        color: $c5;
     }
-}
 
 .media {
-    padding: 1rem;
-}
-
-    .avancement {
-        padding-top: 0.5rem;
+    @media screen and (min-width:576px) {
+        min-height: 320px;    
     }
+}
 
 .actions {
+    width: 100%;
+    @media screen and (max-width:575px) {    
+        margin-top: 2rem;
+    }
     border-top: 1px solid $c5;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0;
 }
 
-    .actions div {
-        margin-right: 1.5rem;
-    }
-
-.delete {
+.deletePopup {
     position: fixed;
-    top: 20%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-width: 290px;
     border-radius: 10px;
     background-color: $c7;
     box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
-}
-
-button {
-    margin: 0 2rem 1.25rem 2rem;
 }

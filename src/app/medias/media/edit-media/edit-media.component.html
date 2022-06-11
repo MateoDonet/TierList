@@ -1,18 +1,20 @@
-<div class="sub-container edit-form">
-    <form (ngSubmit)="edit()" [formGroup]="mediaEditForm">
-        <div class="form-control">
-            <div>Tier</div>
-            <select class="form-control" formControlName="uml_tier_id">
-                <option value="{{tier.tier_id}}" *ngFor="let tier of tiers">{{tier.tier_label}} Tier</option>
-            </select>
-        </div>
-        <div class="form-control">
-            <div>Avancement</div>
-            <input type="text" placeholder="Avancement" formControlName="uml_avancement">
-        </div>
-        <div class="flex create-button">
-            <button type="submit" class="button-action" [disabled]="mediaEditForm.invalid">Editer</button>
-            <button class="button-cancel">Annuler</button>
-        </div>
-    </form>
-</div>
+<section class="my-3">
+    <div class="border rounded phone-margin px-3">
+        <form (ngSubmit)="edit()" [formGroup]="mediaEditForm">
+            <div class="mt-3">
+                <div>Tier</div>
+                <select class="form-select" formControlName="uml_tier_id">
+                    <option value="{{tier.tier_id}}" *ngFor="let tier of tiers">{{tier.tier_label}} Tier</option>
+                </select>
+            </div>
+            <div class="mt-3">
+                <div>Avancement</div>
+                <input class="form-control" type="text" placeholder="Avancement" formControlName="uml_avancement">
+            </div>
+            <div class="my-4 d-flex justify-content-center">
+                <button class="btn button-action me-4" type="submit" [disabled]="mediaEditForm.invalid">Editer</button>
+                <button class="btn button-cancel ms-4">Annuler</button>
+            </div>
+        </form>
+    </div>
+</section>

@@ -19,6 +19,7 @@ import { MediaComponent } from './medias/media/media.component';
 import { MediaCardComponent } from './medias/media-card/media-card.component';
 import { UserComponent } from './user/user.component';
 import { EditMediaComponent } from './medias/media/edit-media/edit-media.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EditMediaComponent } from './medias/media/edit-media/edit-media.compone
     MediaComponent,
     MediaCardComponent,
     UserComponent,
-    EditMediaComponent
+    EditMediaComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

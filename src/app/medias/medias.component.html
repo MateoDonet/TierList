@@ -1,85 +1,90 @@
 <app-menu></app-menu>
 
-<div class="container-xl">
-    <div class="filter-container">
-        <div class="filter-state" (click)="filter = !filter">
+<main class="container-xl">
+    <section class="my-4">
+        <div class="filter-state" (click)="initForm(); filter = !filter">
             <div>Option de Tri / Filtre</div>
         </div>
         <div class="filters" *ngIf="filter">
-            <div class="filter-option">
-                <label>catégorie</label>
-                <select>
-                    <option value="">catégorie</option>
-                </select>
-            </div>
-            <div class="filter-option">
-                <label>tier</label>
-                <select>
-                    <option value="">tier</option>
-                </select>
-            </div>
-            <div class="filter-option">
-                <label>tag</label>
-                <select>
-                    <option value="">tag</option>
-                </select>
-            </div>
-            <div class="filter-option button">
-                <button>Filtrer</button>
-            </div>
+            <form (ngSubmit)="filterMedia()" [formGroup]="filterForm">
+                <div class="d-flex flex-rox mx-1 my-3">
+                    <div class="d-flex flex-row align-items-center">
+                        <label>catégorie</label>
+                        <select class="form-select mx-2" formControlName="categ_id">
+                            <option value=""></option>
+                            <option value="{{categorie.categ_id}}" *ngFor="let categorie of categories">{{categorie.categ_label}}</option>
+                        </select>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <label>tier</label>
+                        <select class="form-select mx-2" formControlName="tier_id">
+                            <option value=""></option>
+                            <option value="{{tier.tier_id}}" *ngFor="let tier of tiers">{{tier.tier_label}} tier</option>
+                        </select>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <label>tag</label>
+                        <select class="form-select mx-2" formControlName="tag_id">
+                            <option value=""></option>
+                            <option value="{{tag.tag_id}}" *ngFor="let tag of tags">{{tag.tag_label}}</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Filtrer</button>
+                </div>
+            </form>
         </div>
-    </div>
+    </section>
 
-    <div class="S_bc">
+    <section class="S_bc">
         <div class="tier" (click)="S_tier = !S_tier; getMediasOfSTier()"><b>S tier</b> ({{medias_S_tier_length}})</div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" *ngIf="S_tier">
-            <app-media-card [media]="media" *ngFor="let media of medias_S_tier"></app-media-card>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 mt-1" *ngIf="S_tier">
+            <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_S_tier"></app-media-card>
         </div>
-    </div>
+    </section>
 
-    <div class="A_bc">
+    <section class="A_bc">
         <div class="tier" (click)="A_tier = !A_tier; getMediasOfATier()"><b>A tier</b> ({{medias_A_tier_length}})</div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" *ngIf="A_tier">
-            <app-media-card [media]="media" *ngFor="let media of medias_A_tier"></app-media-card>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 mt-1" *ngIf="A_tier">
+            <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_A_tier"></app-media-card>
         </div>
-    </div>
+    </section>
 
-    <div class="B_bc">
+    <section class="B_bc">
         <div class="tier" (click)="B_tier = !B_tier; getMediasOfBTier()"><b>B tier</b> ({{medias_B_tier_length}})</div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" *ngIf="B_tier">
-            <app-media-card [media]="media" *ngFor="let media of medias_B_tier"></app-media-card>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 mt-1" *ngIf="B_tier">
+            <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_B_tier"></app-media-card>
         </div>
-    </div>
+    </section>
 
-    <div class="C_bc">
+    <section class="C_bc">
         <div class="tier" (click)="C_tier = !C_tier; getMediasOfCTier()"><b>C tier</b> ({{medias_C_tier_length}})</div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" *ngIf="C_tier">
-            <app-media-card [media]="media" *ngFor="let media of medias_C_tier"></app-media-card>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 mt-1" *ngIf="C_tier">
+            <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_C_tier"></app-media-card>
         </div>
-    </div>
+    </section>
 
-    <div class="D_bc">
+    <section class="D_bc">
         <div class="tier" (click)="D_tier = !D_tier; getMediasOfDTier()"><b>D tier</b> ({{medias_D_tier_length}})</div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" *ngIf="D_tier">
-            <app-media-card [media]="media" *ngFor="let media of medias_D_tier"></app-media-card>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 mt-1" *ngIf="D_tier">
+            <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_D_tier"></app-media-card>
         </div>
-    </div>
+    </section>
 
-    <div class="E_bc">
+    <section class="E_bc">
         <div class="tier" (click)="E_tier = !E_tier; getMediasOfETier()"><b>E tier</b> ({{medias_E_tier_length}})</div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" *ngIf="E_tier">
-            <app-media-card [media]="media" *ngFor="let media of medias_E_tier"></app-media-card>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 mt-1" *ngIf="E_tier">
+            <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_E_tier"></app-media-card>
         </div>
-    </div>
+    </section>
 
-    <div class="F_bc">
+    <section class="F_bc">
         <div class="tier" (click)="F_tier = !F_tier; getMediasOfFTier()"><b>F tier</b> ({{medias_F_tier_length}})</div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" *ngIf="F_tier">
-            <app-media-card [media]="media" *ngFor="let media of medias_F_tier"></app-media-card>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 mt-1" *ngIf="F_tier">
+            <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_F_tier"></app-media-card>
         </div>
-    </div>
+    </section>
 
-    <div class="phone-margin"></div>
-</div>
+    <span class="phone-margin"></span>
+</main>
 
 <app-menu-phone></app-menu-phone>

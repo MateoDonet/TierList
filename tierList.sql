@@ -1,4 +1,4 @@
--- CREATE USER tierlist WITH PASSWORD 'T1&rL1st';
+-- CREATE USER  netlist WITH PASSWORD 'N&tT1&rL1st';
 
 CREATE TABLE utilisateur (
     u_id serial not null,

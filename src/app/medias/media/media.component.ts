@@ -24,7 +24,7 @@ export class MediaComponent implements OnInit {
       this.media = data;
       
       this.getTierClasse(data.tier_label);
-    });
+    });    
   }
 
   delete(): any {

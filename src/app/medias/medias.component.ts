@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Categorie } from '../shared/model/categorie.model';
+import { Media } from '../shared/model/media.model';
+import { Tag } from '../shared/model/tag.model';
+import { Tier } from '../shared/model/tier.model';
+import { CategorieService } from '../shared/services/categorie.service';
 import { MediaService } from '../shared/services/media.service';
+import { TagService } from '../shared/services/tag.service';
+import { TierService } from '../shared/services/tier.service';
 
 @Component({
   selector: 'app-medias',
@@ -24,18 +32,32 @@ export class MediasComponent implements OnInit {
   E_tier: boolean;
   F_tier: boolean;
 
-  medias_S_tier: any[] = [];
-  medias_A_tier: any[] = [];
-  medias_B_tier: any[] = [];
-  medias_C_tier: any[] = [];
-  medias_D_tier: any[] = [];
-  medias_E_tier: any[] = [];
-  medias_F_tier: any[] = [];
+  medias_S_tier: Media[] = [];
+  medias_A_tier: Media[] = [];
+  medias_B_tier: Media[] = [];
+  medias_C_tier: Media[] = [];
+  medias_D_tier: Media[] = [];
+  medias_E_tier: Media[] = [];
+  medias_F_tier: Media[] = [];
+
+  categories: Categorie[] = [];
+  tiers: Tier[] = [];
+  tags: Tag[] = [];
+
+  categIdCtrl: FormControl;
+  tierIdCtrl: FormControl;
+  tagIdCtrl: FormControl;
+
+  filterForm: FormGroup;
 
   filter: boolean;
 
   constructor(
-    private mediaService: MediaService
+    private mediaService: MediaService,
+    private categorieService: CategorieService,
+    private tierService: TierService,
+    private tagService: TagService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +67,33 @@ export class MediasComponent implements OnInit {
 
     this.S_tier = true;
     this.getMediasOfSTier();
+
+    this.categorieService.getCategories().subscribe(datas => {
+      this.categories = datas;
+    });
+
+    this.tierService.getTiers().subscribe(datas => {
+      this.tiers = datas;
+    });
+
+    this.tagService.getTags().subscribe(datas => {
+      this.tags = datas;
+    });
+  }
+
+  initForm() {
+    this.categIdCtrl = this.fb.control("");
+    this.tierIdCtrl = this.fb.control("");
+    this.tagIdCtrl = this.fb.control("");
+    this.filterForm = this.fb.group({
+      categ_id: this.categIdCtrl,
+      tier_id: this.tierIdCtrl,
+      tag_id: this.tagIdCtrl,
+    });
+  }
+
+  filterMedia() {
+
   }
 
   getNbMediaOfTiers(datas: any[]) {
