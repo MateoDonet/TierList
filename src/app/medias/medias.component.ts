@@ -16,6 +16,8 @@ import { TierService } from '../shared/services/tier.service';
 })
 export class MediasComponent implements OnInit {
 
+  loading: boolean;
+
   medias_S_tier_length: number;
   medias_A_tier_length: number;
   medias_B_tier_length: number;
@@ -41,12 +43,11 @@ export class MediasComponent implements OnInit {
   medias_F_tier: Media[] = [];
 
   categories: Categorie[] = [];
-  tiers: Tier[] = [];
   tags: Tag[] = [];
 
   categIdCtrl: FormControl;
-  tierIdCtrl: FormControl;
   tagIdCtrl: FormControl;
+  mediaTitreCtrl: FormControl;
 
   filterForm: FormGroup;
 
@@ -55,14 +56,17 @@ export class MediasComponent implements OnInit {
   constructor(
     private mediaService: MediaService,
     private categorieService: CategorieService,
-    private tierService: TierService,
     private tagService: TagService,
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+
     this.mediaService.getNbMediasForUserWithTier().subscribe(datas => {
       this.getNbMediaOfTiers(datas);
+
+      this.loading = false;
     });
 
     this.S_tier = true;
@@ -72,10 +76,6 @@ export class MediasComponent implements OnInit {
       this.categories = datas;
     });
 
-    this.tierService.getTiers().subscribe(datas => {
-      this.tiers = datas;
-    });
-
     this.tagService.getTags().subscribe(datas => {
       this.tags = datas;
     });
@@ -83,12 +83,12 @@ export class MediasComponent implements OnInit {
 
   initForm() {
     this.categIdCtrl = this.fb.control("");
-    this.tierIdCtrl = this.fb.control("");
     this.tagIdCtrl = this.fb.control("");
+    this.mediaTitreCtrl = this.fb.control("");
     this.filterForm = this.fb.group({
       categ_id: this.categIdCtrl,
-      tier_id: this.tierIdCtrl,
       tag_id: this.tagIdCtrl,
+      media_titre: this.mediaTitreCtrl
     });
   }
 
@@ -126,56 +126,84 @@ export class MediasComponent implements OnInit {
 
   getMediasOfSTier() {
     if(this.S_tier){
+      this.loading = true;
+
       this.mediaService.getUserMediasOfTier("S").subscribe(data => {
         this.medias_S_tier = data;
+
+        this.loading = false;
       });
     }
   }
 
   getMediasOfATier() {
     if(this.A_tier){
+      this.loading = true;
+
       this.mediaService.getUserMediasOfTier("A").subscribe(data => {
         this.medias_A_tier = data;
+        
+        this.loading = false;
       });
     }
   }
 
   getMediasOfBTier() {
     if(this.B_tier){
+      this.loading =true;
+      
       this.mediaService.getUserMediasOfTier("B").subscribe(data => {
         this.medias_B_tier = data;
+        
+        this.loading = false;
       });
     }
   }
 
   getMediasOfCTier() {
     if(this.C_tier){
+      this.loading = true;
+      
       this.mediaService.getUserMediasOfTier("C").subscribe(data => {
         this.medias_C_tier = data;
+        
+        this.loading = false;
       });
     }
   }
 
   getMediasOfDTier() {
     if(this.D_tier){
+      this.loading = true;
+      
       this.mediaService.getUserMediasOfTier("D").subscribe(data => {
         this.medias_D_tier = data;
+        
+        this.loading = false;
       });
     }
   }
 
   getMediasOfETier() {
     if(this.E_tier){
+      this.loading = true;
+      
       this.mediaService.getUserMediasOfTier("E").subscribe(data => {
         this.medias_E_tier = data;
+        
+        this.loading = false;
       });
     }
   }
 
   getMediasOfFTier() {
     if(this.F_tier){
+      this.loading = true;
+      
       this.mediaService.getUserMediasOfTier("F").subscribe(data => {
         this.medias_F_tier = data;
+        
+        this.loading = false;
       });
     }
   }

@@ -12,9 +12,9 @@ button {
     border-radius: 0 4px 4px 0;
 }
 
-button:hover {
-    cursor: pointer;
-}
+    button:hover {
+        cursor: pointer;
+    }
 
 .search {
     padding-top: 1rem;
@@ -35,3 +35,15 @@ button:hover {
     border-radius: 4px 0 0 4px;
     text-indent: 0.5rem;
 }
+
+.cancel-search{
+    background-color: darkgray;
+}
+
+    .cancel-search:hover {
+        cursor: pointer;
+    }
+
+    .cancel-search img {
+        height: 30px;
+    }

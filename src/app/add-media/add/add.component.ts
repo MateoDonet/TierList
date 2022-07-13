@@ -9,9 +9,10 @@ import { MediaService } from 'src/app/shared/services/media.service';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit, OnChanges {
-  medias: [];
+  medias: [] = [];
   mediaToAdd: any = null;
   isVisible: boolean;
+  hasSearch: boolean;
 
   mediaTitreCtrl: FormControl;
   mediaSearchForm: FormGroup;
@@ -24,11 +25,8 @@ export class AddComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
-    // this.initForm();
-
-    this.mediaService.getMedias().subscribe(medias => {
-      this.medias = medias;
-    });
+    this.initForm();
+    this.initData();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -42,10 +40,24 @@ export class AddComponent implements OnInit, OnChanges {
     });
   }
 
+  initData() {
+    this.mediaService.getMedias().subscribe(medias => {
+      this.medias = medias;
+    });
+  }
+
   search(): void {
     this.mediaService.searchMedia(this.mediaTitreCtrl.value).subscribe(medias => {
       this.medias = medias;
+      console.log(this.medias);
+      
     });
+  }
+
+  refreshSearch() {
+    this.hasSearch = false;
+    this.initForm();
+    this.initData(); 
   }
 
   setMediaToAdd(media): any {

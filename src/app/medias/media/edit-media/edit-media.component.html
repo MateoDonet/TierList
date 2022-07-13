@@ -1,5 +1,5 @@
-<section class="my-3">
-    <div class="border rounded phone-margin px-3">
+<section class="popup my-3">
+    <div class="border rounded px-3">
         <form (ngSubmit)="edit()" [formGroup]="mediaEditForm">
             <div class="mt-3">
                 <div>Tier</div>
@@ -13,7 +13,7 @@
             </div>
             <div class="my-4 d-flex justify-content-center">
                 <button class="btn button-action me-4" type="submit" [disabled]="mediaEditForm.invalid">Editer</button>
-                <button class="btn button-cancel ms-4">Annuler</button>
+                <button class="btn button-cancel ms-4" (click)="closeEdit(false)">Annuler</button>
             </div>
         </form>
     </div>

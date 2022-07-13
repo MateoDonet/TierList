@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 
-<div class="container">
-    <div class="flex-x-right sub-menu-container">
+<main class="container mb-3">
+    <section class="d-flex justify-content-end sub-menu-container">
         <div>
             <div class="sub-menu" routerLink="add">Ajouter</div>
             <div *ngIf="isActive('add')" class="active"></div>
@@ -10,9 +10,13 @@
             <div class="sub-menu" routerLink="create-and-add">Créer & Ajouter</div>
             <div *ngIf="isActive('create-and-add')" class="active"></div>
         </div>
-    </div>
+    </section>
     
-    <router-outlet></router-outlet>
-</div>
+    <section>
+        <router-outlet></router-outlet>
+    </section>
+
+    <div class="phone-margin"></div>
+</main>
 
 <app-menu-phone></app-menu-phone>

@@ -4,14 +4,12 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AddMediaComponent } from './add-media/add-media.component';
 import { AddComponent } from './add-media/add/add.component';
 import { CreateComponent } from './add-media/create/create.component';
-
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { MediasComponent } from './medias/medias.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MediaResolverService } from './shared/services/resolve/media-resolver.service';
 import { MediaComponent } from './medias/media/media.component';
 import { UserComponent } from './user/user.component';
-import { EditMediaComponent } from './medias/media/edit-media/edit-media.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -25,12 +23,10 @@ const routes: Routes = [
     ]
   },
   { path: 'media/:id/:tier', component: MediaComponent,
+    runGuardsAndResolvers: "always",
     resolve: {
       mediaFrmRslv: MediaResolverService
     },
-    children: [
-      { path: 'edit', component: EditMediaComponent }
-    ]
   },
   { path: 'mon-compte', component: UserComponent },
   { path: '**', component: PageNotFoundComponent }

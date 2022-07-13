@@ -7,10 +7,8 @@
     transform: translate(-50%, -50%);
     width: 1200px;
     max-width: 90%;
-    @media screen and (max-height:586px) {
-        overflow-y: scroll;
-    }
     max-height: 80%;
+    overflow-y: auto;
     border-radius: 10px;
     background-color: $c7;
     box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
@@ -23,9 +21,9 @@
     height: 20px;
 }
 
-.quit:hover {
-    cursor: pointer;
-}
+    .quit:hover {
+        cursor: pointer;
+    }
 
 .detail-add-media-content {
     margin: 1rem;

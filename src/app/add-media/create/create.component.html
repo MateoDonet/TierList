@@ -1,42 +1,42 @@
 <div class="flex-x-y-center">
     <div class="container">
         <form (ngSubmit)="register()" [formGroup]="mediaCreateForm">
-            <div class="form-control">
+            <div class="mt-3">
                 <div>Titre</div>
-                <input type="text" placeholder="Titre" formControlName="media_titre">
+                <input class="form-control" type="text" placeholder="Titre" formControlName="media_titre">
             </div>
-            <div class="form-control">
+            <div class="mt-3">
                 <div>Description</div>
-                <textarea cols="30" rows="3" placeholder="Résumé du média" formControlName="media_description"></textarea>
+                <textarea class="form-control" cols="30" rows="3" placeholder="Résumé du média" formControlName="media_description"></textarea>
             </div>
-            <div class="form-control">
+            <div class="mt-3">
                 <div>Tags</div>
-                <select class="form-control" formControlName="media_tag_id">
+                <select class="form-select" formControlName="media_tag_id">
                     <option value="{{tag.tag_id}}" *ngFor="let tag of tags">{{tag.tag_label}}</option>
                 </select>
             </div>
-            <div class="form-control">
+            <div class="mt-3">
                 <div>Catégorie</div>
-                <select class="form-control" formControlName="media_categ_id">
+                <select class="form-select" formControlName="media_categ_id">
                     <option value="{{categorie.categ_id}}" *ngFor="let categorie of categories">{{categorie.categ_label}}</option>
                 </select>
             </div>
-            <div class="form-control">
+            <div class="mt-3">
                 <div>Etat</div>
-                <select class="form-control" formControlName="media_etat">
+                <select class="form-select" formControlName="media_etat">
                     <option value="1">En cours</option>
                     <option value="2">Terminé</option>
                 </select>
             </div>
-            <div class="form-control">
+            <div class="mt-3">
                 <div>Tier</div>
-                <select class="form-control" formControlName="uml_tier_id">
+                <select class="form-select" formControlName="uml_tier_id">
                     <option value="{{tier.tier_id}}" *ngFor="let tier of tiers">{{tier.tier_label}} Tier</option>
                 </select>
             </div>
-            <div class="form-control">
+            <div class="mt-3">
                 <div>Avancement</div>
-                <input type="text" placeholder="Avancement" formControlName="uml_avancement">
+                <input class="form-control" type="text" placeholder="Avancement" formControlName="uml_avancement">
             </div>
             <div class="flex-x-center create-button">
                 <button type="submit" [disabled]="mediaCreateForm.invalid">Créer</button>

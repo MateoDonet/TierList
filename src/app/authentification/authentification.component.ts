@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { delay } from 'rxjs/operators';
 
 import { UtilisateurService } from '../shared/services/utilisateur.service';
 
@@ -10,6 +11,9 @@ import { UtilisateurService } from '../shared/services/utilisateur.service';
   styleUrls: ['./authentification.component.scss']
 })
 export class AuthentificationComponent implements OnInit {
+  loading: boolean;
+  loginError: boolean;
+
   uUsernameCtrl: FormControl;
   uPasswordCtrl: FormControl;
 
@@ -36,12 +40,20 @@ export class AuthentificationComponent implements OnInit {
   }
 
   register(): void {
+    this.loading = true;
+
     this.utilisateurService.utilisateurAuthentification(
       this.uUsernameCtrl.value,
       this.uPasswordCtrl.value
     ).subscribe((data) => {
-      localStorage.setItem("u_id", data.u_id);
-      this.router.navigate(['/mes-medias'], { relativeTo: this.route });      
+      try {
+        localStorage.setItem("u_id", data.u_id);
+        this.router.navigate(['/mes-medias'], { relativeTo: this.route });      
+      }
+      catch(e) {
+        this.loginError = true;
+        this.loading = false;
+      }
     });
   }
 }

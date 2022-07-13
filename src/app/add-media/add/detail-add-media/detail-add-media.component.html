@@ -1,26 +1,29 @@
-<div class="detail-add-media">
-    <img src="assets/Images/quit.png" alt="quit" class="quit" (click)="closePopup(false)">
+<section class="detail-add-media">
+    <img src="assets/Images/actions/quit.png" alt="quit" class="quit" (click)="closePopup(false)">
+
     <div class="detail-add-media-content">
         <div class="title">{{media.media_titre}}</div>
         <div class="categorie">{{media.categ_label}}</div>
-        <div>{{media.media_description}}</div>
+        <div class="text-line-breaker">{{media.media_description}}</div>
 
         <hr style="margin-top: 1.5rem;">
 
         <form (ngSubmit)="register()" [formGroup]="addMediaInUserListForm">
-            <div class="form-control">
+            <div class="mt-3">
                 <div>Tier</div>
-                <select class="form-control" formControlName="uml_tier_id">
+                <select class="form-select" formControlName="uml_tier_id">
                     <option value="{{tier.tier_id}}" *ngFor="let tier of tiers">{{tier.tier_label}}</option>
                 </select>
             </div>
-            <div class="form-control">
+
+            <div class="mt-3">
                 <div>Avancement</div>
-                <input type="text" placeholder="Où en êtes vous ?" formControlName="uml_avancement">
+                <input class="form-control" type="text" placeholder="Où en êtes vous ?" formControlName="uml_avancement">
             </div>
+            
             <div class="flex-x-center create-button">
                 <button type="submit" [disabled]="addMediaInUserListForm.invalid">Ajouter</button>
             </div>
         </form>
     </div>
-</div>
+</section>

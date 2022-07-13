@@ -1,0 +1,12 @@
+@import '../../../shared/variables';
+
+.popup {
+    background-color: $c7;
+    @media screen and (max-width:575px) {    
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+    }
+}

@@ -1,17 +1,24 @@
-<div class="bc-login flex-x-y-center h-100vh">
-    <div class="authentification flex-x-y-center">
-        <h4>Sign in</h4>
+<app-spinner *ngIf="loading"></app-spinner>
+
+<div [class]="loading ? 'loading': ''" class="bc-login d-flex justify-content-center align-items-center h-100vh">
+    <div class="authentification d-flex flex-column justify-content-center align-items-center py-3">
+        <h4>Se connecter</h4>
         <form (ngSubmit)="register()" [formGroup]="authentificationForm">
             <div>
-                <input type="text" placeholder="Username" formControlName="u_username">
+                <input class="form-control" type="text" placeholder="Identifiant" formControlName="u_username">
             </div>
             <div>
-                <input type="password" placeholder="Password" formControlName="u_password">
+                <input class="form-control" type="password" placeholder="Mot de passe" formControlName="u_password">
             </div>
-            <div class="flex-x-center">
-                <button type="submit" [disabled]="authentificationForm.invalid">Log in</button>
+            <div>
+                <button class="p-1" type="submit" [disabled]="authentificationForm.invalid">Valider</button>
+            </div>
+
+            <div class="error" *ngIf="loginError">
+                <span class="d-flex justify-content-center align-items-center p-1">Mauvais identifiant ou mot de passe</span>
             </div>
         </form>
-        <span>Don't have an account <a href="">Create one</a></span>
+
+        <a href="">Créer un compte</a>
     </div>
 </div>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { pluck } from 'rxjs/operators';
+import { Media } from 'src/app/shared/model/media.model';
 import { MediaService } from 'src/app/shared/services/media.service';
 import { TierService } from 'src/app/shared/services/tier.service';
 
@@ -11,8 +11,10 @@ import { TierService } from 'src/app/shared/services/tier.service';
   styleUrls: ['./edit-media.component.scss']
 })
 export class EditMediaComponent implements OnInit {
+  @Input() media: Media;
+  @Output() cancelEditEvent = new EventEmitter<boolean>();
+
   tiers: [];
-  media_id: number;
 
   umlTierIdCtrl: FormControl;
   umlAvancementCtrl: FormControl;
@@ -32,11 +34,7 @@ export class EditMediaComponent implements OnInit {
       this.tiers = tiersFrmSrvc;      
     });
 
-    this.route.parent.data.pipe(pluck('mediaFrmRslv')).subscribe(data => {
-      this.initForm(data);
-
-      this.media_id = data.media_id;
-    });
+    this.initForm(this.media);
   }
 
   initForm(data = null) {
@@ -48,13 +46,18 @@ export class EditMediaComponent implements OnInit {
     });
   }
 
+  closeEdit(value: boolean) {
+    this.cancelEditEvent.emit(value);
+  }
+
   edit() {
     this.mediaService.updateMediaInUserList(
-      this.media_id,
+      this.media.media_id,
       this.umlTierIdCtrl.value,
       this.umlAvancementCtrl.value
     ).subscribe(_ => {
-      this.router.navigate(['../../../', this.media_id, this.umlTierIdCtrl.value], { relativeTo: this.route });
+      this.router.navigate(['../../', this.media.media_id, this.umlTierIdCtrl.value], { relativeTo: this.route });
+      this.closeEdit(false);
     })
   }
 

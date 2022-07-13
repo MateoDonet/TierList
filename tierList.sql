@@ -7,25 +7,25 @@ CREATE TABLE utilisateur (
     u_statut INT not null, -- 1 : admin | 2 : user
 	u_last_connexion DATE null,
 	CONSTRAINT PK_Utilisateur primary key (u_id)
-); ALTER TABLE utilisateur OWNER TO tierlist;
+); ALTER TABLE utilisateur OWNER TO ohbx5640_netlist_admin;
 
 CREATE TABLE tier (
 	tier_id serial not null,
 	tier_label CHARACTER VARYING,
 	CONSTRAINT PK_Tier primary key (tier_id)
-); ALTER TABLE tier OWNER TO tierlist;
+); ALTER TABLE tier OWNER TO ohbx5640_netlist_admin;
 
 CREATE TABLE tag (
 	tag_id serial not null,
 	tag_label CHARACTER VARYING,
 	CONSTRAINT PK_Tag primary key (tag_id)
-); ALTER TABLE tag OWNER TO tierlist;
+); ALTER TABLE tag OWNER TO ohbx5640_netlist_admin;
 
 CREATE TABLE categorie (
 	categ_id serial not null,
 	categ_label CHARACTER VARYING,
 	CONSTRAINT PK_Categorie primary key (categ_id)
-); ALTER TABLE categorie OWNER TO tierlist;
+); ALTER TABLE categorie OWNER TO ohbx5640_netlist_admin;
 
 CREATE TABLE media (
 	media_id serial not null,
@@ -38,7 +38,7 @@ CREATE TABLE media (
 	CONSTRAINT PK_Media primary key (media_id),
 	CONSTRAINT FK_Media_Tag foreign key (media_tag_id) REFERENCES tag(tag_id) ON UPDATE CASCADE ON DELETE CASCADE,
 	CONSTRAINT FK_Media_Categorie foreign key (media_categ_id) REFERENCES categorie(categ_id) ON UPDATE CASCADE ON DELETE CASCADE
-); ALTER TABLE media OWNER TO tierlist;
+); ALTER TABLE media OWNER TO ohbx5640_netlist_admin;
 
 CREATE TABLE utilisateur_media_list (
 	uml_id serial not null,
@@ -50,7 +50,7 @@ CREATE TABLE utilisateur_media_list (
 	CONSTRAINT FK_Utilisateur_media_list_User foreign key (uml_u_id) REFERENCES utilisateur(u_id) ON UPDATE CASCADE ON DELETE CASCADE,
 	CONSTRAINT FK_Utilisateur_media_list_Media foreign key (uml_media_id) REFERENCES media(media_id) ON UPDATE CASCADE ON DELETE CASCADE,
 	CONSTRAINT FK_Utilisateur_media_list_Tier foreign key (uml_tier_id) REFERENCES tier(tier_id) ON UPDATE CASCADE ON DELETE CASCADE
-); ALTER TABLE utilisateur_media_list OWNER TO tierlist;
+); ALTER TABLE utilisateur_media_list OWNER TO ohbx5640_netlist_admin;
 
 INSERT INTO utilisateur (u_username, u_password, u_statut) VALUES 
 ('admin', 'Maux2d3passe', 1),
@@ -104,7 +104,7 @@ INSERT INTO media (media_titre, media_description, media_img, media_tag_id, medi
 INSERT INTO utilisateur_media_list (uml_u_id, uml_media_id, uml_tier_id, uml_avancement) VALUES
 (2, 1, 1, 'Saison 7 Episode final');
 
--- fonction pour créer un média puis le tierlistiser
+-- fonction pour créer un média puis le ohbx5640_netlist_adminiser
 CREATE OR REPLACE FUNCTION mediaAndUtilisateurListAdd(
     prm_media_titre CHARACTER VARYING, 
 	prm_media_description CHARACTER VARYING, 
@@ -155,4 +155,4 @@ BEGIN
 END; 
 $body$
 LANGUAGE plpgsql volatile;
-ALTER FUNCTION mediaAndUtilisateurListAdd(CHARACTER VARYING, CHARACTER VARYING, CHARACTER VARYING, INT, INT, INT, INT, INT, CHARACTER VARYING) OWNER TO tierlist;
+ALTER FUNCTION mediaAndUtilisateurListAdd(CHARACTER VARYING, CHARACTER VARYING, CHARACTER VARYING, INT, INT, INT, INT, INT, CHARACTER VARYING) OWNER TO ohbx5640_netlist_admin;

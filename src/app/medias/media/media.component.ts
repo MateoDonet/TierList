@@ -12,6 +12,7 @@ export class MediaComponent implements OnInit {
 
   media: any = null;
   deleteRequest: boolean;
+  editRequest: boolean;
 
   constructor(
     private mediaService: MediaService,
@@ -20,11 +21,15 @@ export class MediaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initData();
+  }
+
+  initData() {
     this.route.data.pipe(pluck('mediaFrmRslv')).subscribe(data => {
       this.media = data;
-      
+
       this.getTierClasse(data.tier_label);
-    });    
+    }); 
   }
 
   delete(): any {
@@ -62,5 +67,9 @@ export class MediaComponent implements OnInit {
   setTierClass(tier: string) {
     document.getElementById("media_tier").className = '';
     document.getElementById("media_tier").classList.add(tier);
+  }
+
+  cancelEdit(param): any {
+    this.editRequest = param;
   }
 }

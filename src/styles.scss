@@ -4,17 +4,30 @@ html, body, input {
     margin: 0;
     padding: 0;
     border: 0;
-    font-family: $ff1;//-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    font-family: $ff1;
     background-image: url("assets/Images/bc.png");
 }
 
-.flex {
-    display: flex;
+/* scrollbar width */
+::-webkit-scrollbar {
+    width: 8px;
+    box-shadow: inset 0 0 5px rgb(200, 200, 200);
 }
 
-    .flex-x-right {
-        display: flex;
-        justify-content: flex-end;
+    /* scrollbart track */
+    ::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+
+    /* scrollbar handle */
+    ::-webkit-scrollbar-thumb {
+        background: gray; 
+        border-radius: 10px;
+    }
+
+    /* scrollbar handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(75, 75, 75); 
     }
 
 .h-100vh {
@@ -26,6 +39,11 @@ html, body, input {
         margin-bottom: $phone_menu_height;       
     }
     margin-bottom: 0;
+}
+
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
 }
 
 .card:hover {
@@ -48,6 +66,29 @@ html, body, input {
     color: $c3;
     margin-right: 7px;
 }
+
+.text-line-breaker {
+    white-space: pre-wrap;
+}
+
+.light-text {
+    color: grey;
+    font-size: 14px;
+}
+
+%button {
+    color: white;
+}
+
+    .button-action {
+        @extend %button;
+        background-color: green;
+    }
+
+    .button-cancel {
+        @extend %button;
+        background-color: brown;
+    }
 
 %tier {
     width: fit-content;
@@ -97,18 +138,4 @@ html, body, input {
 .blur {
     filter: blur(4px) brightness(90%);
     pointer-events: none;
-}
-
-%button {
-    color: white;
-}
-
-.button-action {
-    @extend %button;
-    background-color: green;
-}
-
-.button-cancel {
-    @extend %button;
-    background-color: brown;
 }
