@@ -46,9 +46,14 @@ html, body, input {
     pointer-events: none;
 }
 
-.card:hover {
-    cursor: pointer;
+.card {
+    border: solid gray 1px;
+    border-radius: 10px;
 }
+
+    .card:hover {
+        cursor: pointer;
+    }
 
 .title {
     font-size: 20px;

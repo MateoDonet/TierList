@@ -32,13 +32,13 @@
     </section>
 
     <section class="accordion mb-3" id="accordion-medias">
-        <div class="accordion-item"><!-- S_bc -->
+        <div class="accordion-item">
             <h2 id="s-heading" (click)="S_tier = !S_tier; getMediasOfSTier()">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#s-media" aria-expanded="true" aria-controls="s-media">
+                <button class="accordion-button S_accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#s-media" aria-expanded="true" aria-controls="s-media">
                     <b>S tier</b> ({{medias_S_tier_length}})
                 </button>
             </h2>
-            <div class="accordion-collapse collapse show"
+            <div class="accordion-collapse S_accordion-collapse collapse show"
             id="s-media" aria-labelledby="s-heading" data-bs-parent="#accordion-medias">
                 <div class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
                     <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_S_tier"></app-media-card>
@@ -47,13 +47,13 @@
             </div>
         </div>
     
-        <div class="accordion-item"><!-- A_bc -->
+        <div class="accordion-item">
             <h2 id="a-heading" (click)="A_tier = !A_tier; getMediasOfATier()">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a-media" aria-expanded="false" aria-controls="a-media">
+                <button class="accordion-button A_accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a-media" aria-expanded="false" aria-controls="a-media">
                     <b>A tier</b> ({{medias_A_tier_length}})
                 </button>
             </h2>
-            <div class="accordion-collapse collapse" 
+            <div class="accordion-collapse A_accordion-collapse collapse" 
             id="a-media" aria-labelledby="a-heading" data-bs-parent="#accordion-medias">
                 <div class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
                     <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_A_tier"></app-media-card>
@@ -62,13 +62,13 @@
             </div>
         </div>
     
-        <div class="accordion-item"><!-- B_bc -->
+        <div class="accordion-item">
             <h2 id="b-heading" (click)="B_tier = !B_tier; getMediasOfBTier()">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#b-media" aria-expanded="false" aria-controls="b-media">
+                <button class="accordion-button B_accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#b-media" aria-expanded="false" aria-controls="b-media">
                     <b>B tier</b> ({{medias_B_tier_length}})
                 </button>
             </h2>
-            <div class="accordion-collapse collapse"
+            <div class="accordion-collapse B_accordion-collapse collapse"
             id="b-media" aria-labelledby="b-heading" data-bs-parent="#accordion-medias">
                 <div class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
                     <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_B_tier"></app-media-card>
@@ -77,13 +77,13 @@
             </div>
         </div>
     
-        <div class="accordion-item"><!-- C_bc -->
+        <div class="accordion-item">
             <h2 id="c-heading" (click)="C_tier = !C_tier; getMediasOfCTier()">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-media" aria-expanded="false" aria-controls="c-media">
+                <button class="accordion-button C_accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-media" aria-expanded="false" aria-controls="c-media">
                     <b>C tier</b> ({{medias_C_tier_length}})
                 </button>
             </h2>
-            <div class="accordion-collapse collapse" 
+            <div class="accordion-collapse C_accordion-collapse collapse" 
             id="c-media" aria-labelledby="c-heading" data-bs-parent="#accordion-medias">
                 <div class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
                     <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_C_tier"></app-media-card>
@@ -92,13 +92,13 @@
             </div>
         </div>
     
-        <div class="accordion-item"><!-- D_bc -->
+        <div class="accordion-item">
             <h2 id="d-heading" (click)="D_tier = !D_tier; getMediasOfDTier()">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#d-media" aria-expanded="false" aria-controls="d-media">
+                <button class="accordion-button D_accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#d-media" aria-expanded="false" aria-controls="d-media">
                     <b>D tier</b> ({{medias_D_tier_length}})
                 </button>
             </h2>
-            <div class="accordion-collapse collapse" 
+            <div class="accordion-collapse D_accordion-collapse collapse" 
             id="d-media" aria-labelledby="d-heading" data-bs-parent="#accordion-medias">
                 <div class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
                     <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_D_tier"></app-media-card>
@@ -107,13 +107,13 @@
             </div>
         </div>
     
-        <div class="accordion-item"><!-- E_bc -->
+        <div class="accordion-item">
             <h2 id="e-heading" (click)="E_tier = !E_tier; getMediasOfETier()">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#e-media" aria-expanded="false" aria-controls="e-media">
+                <button class="accordion-button E_accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#e-media" aria-expanded="false" aria-controls="e-media">
                     <b>E tier</b> ({{medias_E_tier_length}})
                 </button>
             </h2>
-            <div class="accordion-collapse collapse" 
+            <div class="accordion-collapse E_accordion-collapse collapse" 
             id="e-media" aria-labelledby="e-heading" data-bs-parent="#accordion-medias">
                 <div class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
                     <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_E_tier"></app-media-card>
@@ -122,13 +122,13 @@
             </div>
         </div>
     
-        <div class="accordion-item"><!-- F_bc -->
+        <div class="accordion-item">
             <h2 id="f-heading" (click)="F_tier = !F_tier; getMediasOfFTier()">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f-media" aria-expanded="false" aria-controls="f-media">
+                <button class="accordion-button F_accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f-media" aria-expanded="false" aria-controls="f-media">
                     <b>F tier</b> ({{medias_F_tier_length}})
                 </button>
             </h2>
-            <div class="accordion-collapse collapse" 
+            <div class="accordion-collapse F_accordion-collapse collapse" 
             id="f-media" aria-labelledby="f-heading" data-bs-parent="#accordion-medias">
                 <div class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
                     <app-media-card [media]="media" [routerLink]="['../media', media.media_id, media.uml_tier_id]" *ngFor="let media of medias_F_tier"></app-media-card>

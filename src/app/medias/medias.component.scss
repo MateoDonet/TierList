@@ -36,44 +36,96 @@ h2 {
         text-decoration: underline;
     }
 
-%tier_container {
-    padding: 0.5rem
+.S_accordion-button {
+    background-color: $cS;
+    color: black;
 }
 
-    .S_bc {
-        @extend %tier_container;
-        background-color: $cS
+.A_accordion-button {
+    background-color: $cA;
+    color: black;
+}
+
+.B_accordion-button {
+    background-color: $cB;
+    color: black;
+}
+
+.C_accordion-button {
+    background-color: $cC;
+    color: black;
+}
+
+.D_accordion-button {
+    background-color: $cD;
+    color: black;
+}
+
+.E_accordion-button {
+    background-color: $cE;
+    color: black;
+}
+
+.F_accordion-button {
+    background-color: $cF;
+    color: black;
+}
+
+    .S_accordion-button:not(.collapsed), .S_accordion-button:hover {
+        background-color: $cSdarker;
     }
 
-    .A_bc {
-        @extend %tier_container;
-        background-color: $cA
+    .A_accordion-button:not(.collapsed), .A_accordion-button:hover {
+        background-color: $cAdarker;
     }
 
-    .B_bc {
-        @extend %tier_container;
-        background-color: $cB
+    .B_accordion-button:not(.collapsed), .B_accordion-button:hover {
+        background-color: $cBdarker;
     }
 
-    .C_bc {
-        @extend %tier_container;
-        background-color: $cC
+    .C_accordion-button:not(.collapsed), .C_accordion-button:hover {
+        background-color: $cCdarker;
     }
 
-    .D_bc {
-        @extend %tier_container;
-        background-color: $cD
+    .D_accordion-button:not(.collapsed), .D_accordion-button:hover {
+        background-color: $cDdarker;
     }
 
-    .E_bc {
-        @extend %tier_container;
-        background-color: $cE
+    .E_accordion-button:not(.collapsed), .E_accordion-button:hover {
+        background-color: $cEdarker;
     }
 
-    .F_bc {
-        @extend %tier_container;
-        background-color: $cF
+    .F_accordion-button:not(.collapsed), .F_accordion-button:hover {
+        background-color: $cFdarker;
     }
+
+.S_accordion-collapse {
+    background-color: $cS;
+}
+
+.A_accordion-collapse {
+    background-color: $cA;
+}
+
+.B_accordion-collapse {
+    background-color: $cB;
+}
+
+.C_accordion-collapse {
+    background-color: $cC;
+}
+
+.D_accordion-collapse {
+    background-color: $cD;
+}
+
+.E_accordion-collapse {
+    background-color: $cE;
+}
+
+.F_accordion-collapse {
+    background-color: $cF;
+}
 
 .form-select {
     width: 5rem;
