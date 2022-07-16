@@ -3,11 +3,9 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Categorie } from '../shared/model/categorie.model';
 import { Media } from '../shared/model/media.model';
 import { Tag } from '../shared/model/tag.model';
-import { Tier } from '../shared/model/tier.model';
 import { CategorieService } from '../shared/services/categorie.service';
 import { MediaService } from '../shared/services/media.service';
 import { TagService } from '../shared/services/tag.service';
-import { TierService } from '../shared/services/tier.service';
 
 @Component({
   selector: 'app-medias',
@@ -127,84 +125,84 @@ export class MediasComponent implements OnInit {
   getMediasOfSTier() {
     if(this.S_tier){
       this.loading = true;
-
       this.mediaService.getUserMediasOfTier("S").subscribe(data => {
         this.medias_S_tier = data;
-
         this.loading = false;
       });
+    } else {
+      this.medias_S_tier = [];
     }
   }
 
   getMediasOfATier() {
     if(this.A_tier){
       this.loading = true;
-
       this.mediaService.getUserMediasOfTier("A").subscribe(data => {
         this.medias_A_tier = data;
-        
         this.loading = false;
       });
+    } else {
+      this.medias_A_tier = [];
     }
   }
 
   getMediasOfBTier() {
     if(this.B_tier){
       this.loading =true;
-      
       this.mediaService.getUserMediasOfTier("B").subscribe(data => {
         this.medias_B_tier = data;
-        
         this.loading = false;
       });
+    } else {
+      this.medias_B_tier = [];
     }
   }
 
   getMediasOfCTier() {
     if(this.C_tier){
       this.loading = true;
-      
       this.mediaService.getUserMediasOfTier("C").subscribe(data => {
         this.medias_C_tier = data;
-        
         this.loading = false;
       });
+    } else {
+      this.medias_C_tier = [];
     }
   }
 
   getMediasOfDTier() {
     if(this.D_tier){
       this.loading = true;
-      
       this.mediaService.getUserMediasOfTier("D").subscribe(data => {
         this.medias_D_tier = data;
-        
         this.loading = false;
       });
+    } else {
+      this.medias_D_tier = [];
     }
   }
 
   getMediasOfETier() {
     if(this.E_tier){
       this.loading = true;
-      
       this.mediaService.getUserMediasOfTier("E").subscribe(data => {
         this.medias_E_tier = data;
-        
         this.loading = false;
       });
+    } else {
+      this.medias_E_tier = [];
     }
   }
 
   getMediasOfFTier() {
     if(this.F_tier){
       this.loading = true;
-      
       this.mediaService.getUserMediasOfTier("F").subscribe(data => {
         this.medias_F_tier = data;
-        
         this.loading = false;
       });
+    } else {
+      this.medias_F_tier = [];
     }
   }
 }

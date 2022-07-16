@@ -1,5 +1,12 @@
 @import "../../shared/variables";
 
+.sub-container {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 1.5rem;
+    background-color: white;
+}
+
 .go-back{
     margin-top: 1rem;
     @media screen and (min-width:710px) {
@@ -32,7 +39,7 @@
 
 .deletePopup {
     position: fixed;
-    top: 10%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-width: 290px;
