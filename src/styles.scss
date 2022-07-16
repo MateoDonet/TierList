@@ -46,29 +46,9 @@ html, body, input {
     pointer-events: none;
 }
 
-.card {
-    border: solid gray 1px;
-}
-
-    .card:hover {
-        cursor: pointer;
-    }
-
-.title {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.media-sub-info {
-    display: flex;
-    align-items: center;
-}
-
-.categorie {
-    font-size: 16px;
-    font-weight: bold;
-    color: $c3;
-    margin-right: 7px;
+.blur {
+    filter: blur(4px) brightness(90%);
+    pointer-events: none;
 }
 
 .text-line-breaker {
@@ -139,7 +119,14 @@ html, body, input {
         background-color: $cF
     }
 
-.blur {
-    filter: blur(4px) brightness(90%);
-    pointer-events: none;
+.media-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.media-categorie {
+    font-size: 16px;
+    font-weight: bold;
+    color: $c3;
+    margin-right: 7px;
 }
