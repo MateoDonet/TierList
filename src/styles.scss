@@ -5,7 +5,7 @@ html, body, input {
     padding: 0;
     border: 0;
     font-family: $ff1;
-    background-image: url("assets/Images/bc.png");
+    background-color: whitesmoke;
 }
 
 /* scrollbar width */
@@ -48,7 +48,6 @@ html, body, input {
 
 .card {
     border: solid gray 1px;
-    border-radius: 10px;
 }
 
     .card:hover {

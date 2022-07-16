@@ -41,29 +41,53 @@ h2 {
     color: black;
 }
 
+    .S_accordion-button:not(.collapsed), .S_accordion-button:hover {
+        background-color: $cSdarker;
+    }
+
 .A_accordion-button {
     background-color: $cA;
     color: black;
 }
+
+    .A_accordion-button:not(.collapsed), .A_accordion-button:hover {
+        background-color: $cAdarker;
+    }
 
 .B_accordion-button {
     background-color: $cB;
     color: black;
 }
 
+    .B_accordion-button:not(.collapsed), .B_accordion-button:hover {
+        background-color: $cBdarker;
+    }
+
 .C_accordion-button {
     background-color: $cC;
     color: black;
 }
+
+    .C_accordion-button:not(.collapsed), .C_accordion-button:hover {
+        background-color: $cCdarker;
+    }
 
 .D_accordion-button {
     background-color: $cD;
     color: black;
 }
 
+    .D_accordion-button:not(.collapsed), .D_accordion-button:hover {
+        background-color: $cDdarker;
+    }
+
 .E_accordion-button {
     background-color: $cE;
     color: black;
+}
+
+.E_accordion-button:not(.collapsed), .E_accordion-button:hover {
+    background-color: $cEdarker;
 }
 
 .F_accordion-button {
@@ -71,33 +95,13 @@ h2 {
     color: black;
 }
 
-    .S_accordion-button:not(.collapsed), .S_accordion-button:hover {
-        background-color: $cSdarker;
-    }
-
-    .A_accordion-button:not(.collapsed), .A_accordion-button:hover {
-        background-color: $cAdarker;
-    }
-
-    .B_accordion-button:not(.collapsed), .B_accordion-button:hover {
-        background-color: $cBdarker;
-    }
-
-    .C_accordion-button:not(.collapsed), .C_accordion-button:hover {
-        background-color: $cCdarker;
-    }
-
-    .D_accordion-button:not(.collapsed), .D_accordion-button:hover {
-        background-color: $cDdarker;
-    }
-
-    .E_accordion-button:not(.collapsed), .E_accordion-button:hover {
-        background-color: $cEdarker;
-    }
-
     .F_accordion-button:not(.collapsed), .F_accordion-button:hover {
         background-color: $cFdarker;
     }
+
+.accordion-button:focus {
+    box-shadow: inherit;
+}
 
 .S_accordion-collapse {
     background-color: $cS;
