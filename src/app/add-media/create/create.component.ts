@@ -12,6 +12,8 @@ import { TierService } from 'src/app/shared/services/tier.service';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
+  loading: boolean;
+
   categories: [];
   tiers: [];
   tags: [];
@@ -56,7 +58,6 @@ export class CreateComponent implements OnInit {
   initForm() {
     this.mediaTitreCtrl = this.fb.control('', Validators.required);
     this.mediaDescriptionCtrl = this.fb.control('', Validators.required);
-    // this.mediaImgCtrl = this.fb.control('', Validators.required);
     this.mediaTagIdCtrl = this.fb.control(1, Validators.required);
     this.mediaCategIdCtrl = this.fb.control(1, Validators.required);
     this.mediaEtatCtrl = this.fb.control(1, Validators.required);
@@ -65,7 +66,6 @@ export class CreateComponent implements OnInit {
     this.mediaCreateForm = this.fb.group({
       media_titre: this.mediaTitreCtrl,
       media_description: this.mediaDescriptionCtrl,
-      // media_img: this.mediaImgCtrl,
       media_tag_id: this.mediaTagIdCtrl,
       media_categ_id: this.mediaCategIdCtrl,
       media_etat: this.mediaEtatCtrl,
@@ -75,6 +75,7 @@ export class CreateComponent implements OnInit {
   }
 
   register(): void {
+    this.loading = true;
     this.mediaService.createMediaAndAddInList(
       this.mediaTitreCtrl.value,
       this.mediaDescriptionCtrl.value,
@@ -87,6 +88,7 @@ export class CreateComponent implements OnInit {
       this.umlAvancementCtrl.value
     ).subscribe(_ => {
       this.router.navigate(['/mes-medias'], { relativeTo: this.route });
+      this.loading = false;
     });
   }
 }

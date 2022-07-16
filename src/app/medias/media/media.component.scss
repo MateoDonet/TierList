@@ -48,9 +48,8 @@
     box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
 }
 
-.edit-blur {
+.edit-loading {
     @media screen and (max-width:575px) { 
-        filter: blur(4px) brightness(90%);
-        pointer-events: none;
+        opacity: 0.5;
     }
 }

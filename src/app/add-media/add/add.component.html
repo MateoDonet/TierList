@@ -1,4 +1,6 @@
-<section [ngClass]="{'blur': isVisible}">
+<app-spinner *ngIf="loading"></app-spinner>
+
+<section [ngClass]="{'loading': isVisible || loading}">
     <div>
         <form class="d-flex justify-content-center search" (ngSubmit)="search()" [formGroup]="mediaSearchForm">
             <input type="text" placeholder="Chercher" formControlName="media_titre">

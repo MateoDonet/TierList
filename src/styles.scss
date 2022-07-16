@@ -42,12 +42,7 @@ html, body, input {
 }
 
 .loading {
-    opacity: 0.7;
-    pointer-events: none;
-}
-
-.blur {
-    filter: blur(4px) brightness(90%);
+    opacity: 0.5;
     pointer-events: none;
 }
 

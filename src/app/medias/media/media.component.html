@@ -8,7 +8,7 @@
     </div>
 
     <section class="sub-container">
-        <section [ngClass]="[deleteRequest ? 'blur': '', editRequest ? 'edit-blur': '']">
+        <section [ngClass]="{'loading, edit-loading': deleteRequest || editRequest}">
             <div class="row g-4">
                 <div class="col-12 col-sm-6 col-md-4 ml-3 bg-dark rounded d-flex justify-content-center" style="height: 320px;">
                     <img src="assets/Images/media/{{media.media_img}}" height="320" width="225" alt="{{media.media_titre}}">
@@ -35,7 +35,7 @@
             </div>
         </section>
         
-        <section [class]="deleteRequest ? 'blur': ''" *ngIf="editRequest">
+        <section [ngClass]="{'loading': deleteRequest}" *ngIf="editRequest">
             <app-edit-media [media]="media" (cancelEditEvent)="cancelEdit($event)" *ngIf="editRequest"></app-edit-media>
         </section>
     </section>

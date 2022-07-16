@@ -8,7 +8,10 @@ import { MediaService } from 'src/app/shared/services/media.service';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddComponent implements OnInit, OnChanges {
+export class AddComponent implements OnInit {
+
+  loading: boolean;
+
   medias: [] = [];
   mediaToAdd: any = null;
   isVisible: boolean;
@@ -29,10 +32,6 @@ export class AddComponent implements OnInit, OnChanges {
     this.initData();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-  }
-
   initForm() {
     this.mediaTitreCtrl = this.fb.control('', Validators.required);
     this.mediaSearchForm = this.fb.group({
@@ -41,16 +40,18 @@ export class AddComponent implements OnInit, OnChanges {
   }
 
   initData() {
+    this.loading = true;
     this.mediaService.getMedias().subscribe(medias => {
       this.medias = medias;
+      this.loading = false;
     });
   }
 
   search(): void {
+    this.loading = true;
     this.mediaService.searchMedia(this.mediaTitreCtrl.value).subscribe(medias => {
       this.medias = medias;
-      console.log(this.medias);
-      
+      this.loading = false;
     });
   }
 

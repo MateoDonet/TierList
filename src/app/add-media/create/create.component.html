@@ -1,5 +1,7 @@
-<div class="flex-x-y-center">
-    <div class="container">
+<app-spinner *ngIf="loading"></app-spinner>
+
+<div [ngClass]="{'loading': loading}" class="d-flex justify-content-center align-items-center">
+    <div class="container-xl">
         <form (ngSubmit)="register()" [formGroup]="mediaCreateForm">
             <div class="mt-3">
                 <div>Titre</div>

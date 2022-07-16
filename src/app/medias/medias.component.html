@@ -2,7 +2,7 @@
 
 <app-menu></app-menu>
 
-<main [class]="loading ? 'loading': ''" class="container-xl">
+<main [ngClass]="{'loading': loading}" class="container-xl">
     <section class="my-4" id="filter">
         <div class="filter-state" (click)="initForm(); filter = !filter">
             <div>Option de Tri / Filtre</div>

@@ -1,6 +1,6 @@
 <app-spinner *ngIf="loading"></app-spinner>
 
-<div [class]="loading ? 'loading': ''" class="bc-login d-flex justify-content-center align-items-center h-100vh">
+<div [ngClass]="{'loading': loading}" class="bc-login d-flex justify-content-center align-items-center h-100vh">
     <div class="authentification d-flex flex-column justify-content-center align-items-center py-3">
         <h4>Se connecter</h4>
         <form (ngSubmit)="register()" [formGroup]="authentificationForm">

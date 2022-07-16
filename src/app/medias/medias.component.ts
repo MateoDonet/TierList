@@ -129,8 +129,6 @@ export class MediasComponent implements OnInit {
         this.medias_S_tier = data;
         this.loading = false;
       });
-    } else {
-      this.medias_S_tier = [];
     }
   }
 
@@ -141,8 +139,6 @@ export class MediasComponent implements OnInit {
         this.medias_A_tier = data;
         this.loading = false;
       });
-    } else {
-      this.medias_A_tier = [];
     }
   }
 
@@ -153,8 +149,6 @@ export class MediasComponent implements OnInit {
         this.medias_B_tier = data;
         this.loading = false;
       });
-    } else {
-      this.medias_B_tier = [];
     }
   }
 
@@ -165,8 +159,6 @@ export class MediasComponent implements OnInit {
         this.medias_C_tier = data;
         this.loading = false;
       });
-    } else {
-      this.medias_C_tier = [];
     }
   }
 
@@ -177,8 +169,6 @@ export class MediasComponent implements OnInit {
         this.medias_D_tier = data;
         this.loading = false;
       });
-    } else {
-      this.medias_D_tier = [];
     }
   }
 
@@ -189,8 +179,6 @@ export class MediasComponent implements OnInit {
         this.medias_E_tier = data;
         this.loading = false;
       });
-    } else {
-      this.medias_E_tier = [];
     }
   }
 
@@ -201,8 +189,6 @@ export class MediasComponent implements OnInit {
         this.medias_F_tier = data;
         this.loading = false;
       });
-    } else {
-      this.medias_F_tier = [];
     }
   }
 }
